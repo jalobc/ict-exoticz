@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const locations = [
+  {
+    name: 'ICT Exoticz',
+    address: '2837 N Broadway St #100',
+    city: 'Wichita, KS 67219',
+    phone: '(316) 413-1307',
+    phoneHref: 'tel:+13164131307',
+    email: null,
+    hours: [
+      { day: 'Monday', hours: '4:20 PM – 8:00 PM' },
+      { day: 'Tuesday', hours: 'Closed' },
+      { day: 'Wednesday', hours: '4:20 PM – 8:00 PM' },
+      { day: 'Thursday', hours: '4:20 PM – 8:00 PM' },
+      { day: 'Friday', hours: '4:20 PM – 10:00 PM' },
+      { day: 'Saturday', hours: '1:00 PM – 10:00 PM' },
+      { day: 'Sunday', hours: 'Closed' },
+    ],
+    mapQuery: '2837+N+Broadway+St+%23100,+Wichita,+KS+67219',
+    facebook: 'https://www.facebook.com/p/ICT-Exoticz-61554037832230/',
+  },
+  {
+    name: 'ICT Exoticz 2',
+    address: '3125 S Seneca St',
+    city: 'Wichita, KS 67217',
+    phone: '(316) 312-2515',
+    phoneHref: 'tel:+13163122515',
+    email: 'ICTEXOTICZ2@YAHOO.COM',
+    hours: [
+      { day: 'Monday', hours: '10:00 AM – 8:00 PM' },
+      { day: 'Tuesday', hours: '10:00 AM – 8:00 PM' },
+      { day: 'Wednesday', hours: '10:00 AM – 8:00 PM' },
+      { day: 'Thursday', hours: '10:00 AM – 8:00 PM' },
+      { day: 'Friday', hours: '10:00 AM – 8:00 PM' },
+      { day: 'Saturday', hours: '10:00 AM – 8:00 PM' },
+      { day: 'Sunday', hours: '12:00 PM – 8:00 PM' },
+    ],
+    mapQuery: '3125+S+Seneca+St,+Wichita,+KS+67217',
+    facebook: 'https://www.facebook.com/p/ICT-Exoticz-2-61572496577319/',
+  },
+];
+---
+
+<Layout title="Locations" description="Find ICT Exoticz locations in Wichita, KS. Two stores with hours, addresses, and contact info.">
+
+  <section class="page-header">
+    <h1>Our Locations</h1>
+    <p>Two convenient locations in Wichita, KS to serve you.</p>
+  </section>
+
+  <section class="locations">
+    {locations.map(loc => (
+      <div class="location">
+        <h2>{loc.name}</h2>
+
+        <div class="location-details">
+          <div class="location-info">
+            <h3>Address</h3>
+            <address>
+              {loc.address}<br />
+              {loc.city}
+            </address>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${loc.mapQuery}`}
+              target="_blank"
+              rel="noopener"
+            >
+              Get Directions on Google Maps
+            </a>
+
+            <h3>Contact</h3>
+            <p><a href={loc.phoneHref}>{loc.phone}</a></p>
+            {loc.email && <p><a href={`mailto:${loc.email}`}>{loc.email}</a></p>}
+
+            <h3>Social Media</h3>
+            <p><a href={loc.facebook} target="_blank" rel="noopener">Facebook Page</a></p>
+            <p><a href="https://www.instagram.com/ictexoticz/" target="_blank" rel="noopener">Instagram – @ictexoticz</a></p>
+          </div>
+
+          <div class="location-hours">
+            <h3>Hours of Operation</h3>
+            <table>
+              <tbody>
+                {loc.hours.map(({ day, hours }) => (
+                  <tr class={hours === 'Closed' ? 'closed' : ''}>
+                    <td>{day}</td>
+                    <td>{hours}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    ))}
+  </section>
+
+</Layout>

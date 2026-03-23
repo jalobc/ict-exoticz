@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const cannabinoidProducts = [
+  {
+    name: 'HHC Vape Cartridges',
+    description: 'Premium HHC vape cartridges available in a variety of strains and flavors. Smooth, consistent hits with lab-tested purity.',
+  },
+  {
+    name: 'HHC Oil',
+    description: 'High-quality HHC oil for versatile use. Easy to dose and great for those who prefer a different consumption method.',
+  },
+  {
+    name: 'Delta-9 Gummies',
+    description: 'Delicious hemp-derived Delta-9 THC gummies. Precisely dosed and made with quality ingredients.',
+  },
+  {
+    name: 'Combination Cannabinoid Products',
+    description: 'Carefully formulated blends of multiple cannabinoids for a more tailored experience. Ask our staff for recommendations.',
+  },
+];
+
+const lifestyleProducts = [
+  {
+    name: 'Apparel',
+    description: 'Stylish, curated clothing that reflects your unique personality. We bring exotic fashion finds to Wichita.',
+  },
+  {
+    name: 'Accessories',
+    description: 'Stand-out accessories to complete your look. Constantly updated with the latest trends.',
+  },
+  {
+    name: 'Lifestyle & Exotic Items',
+    description: 'A rotating selection of unique exotic products that elevate your everyday. Come in to see what\'s new.',
+  },
+];
+---
+
+<Layout title="Products" description="Browse ICT Exoticz's selection of hemp-derived cannabinoids, apparel, accessories, and lifestyle products in Wichita, KS.">
+
+  <section class="page-header">
+    <h1>Our Products</h1>
+    <p>Quality hemp-derived cannabinoids, stylish apparel, accessories, and exotic lifestyle goods — all under one roof.</p>
+  </section>
+
+  <!-- Cannabinoid Products -->
+  <section class="product-category">
+    <h2>Hemp-Derived Cannabinoids</h2>
+    <p class="category-note">All cannabinoid products are hemp-derived and lab-tested. Must be 21+ to purchase.</p>
+    <div class="product-grid">
+      {cannabinoidProducts.map(product => (
+        <div class="product-card">
+          <h3>{product.name}</h3>
+          <p>{product.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Lifestyle & Apparel -->
+  <section class="product-category">
+    <h2>Apparel & Lifestyle</h2>
+    <p class="category-note">Curated exotic fashion and lifestyle items to elevate your look and everyday life.</p>
+    <div class="product-grid">
+      {lifestyleProducts.map(product => (
+        <div class="product-card">
+          <h3>{product.name}</h3>
+          <p>{product.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Visit Us CTA -->
+  <section class="visit-cta">
+    <h2>Come See Us In-Store</h2>
+    <p>Our inventory is always evolving. Visit one of our two Wichita locations to see the full selection and get personalized recommendations from our knowledgeable staff.</p>
+    <a href="/locations">Find a Location</a>
+  </section>
+
+  <!-- Disclaimer -->
+  <section class="disclaimer">
+    <p>
+      Hemp-derived products are sold in compliance with the 2018 Farm Bill. Products contain less than 0.3% Delta-9 THC on a dry weight basis.
+      These statements have not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure, or prevent any disease.
+      Must be 21 years of age or older to purchase.
+    </p>
+  </section>
+
+</Layout>
