@@ -28,11 +28,9 @@ const base = import.meta.env.BASE_URL;
       </p>
     </div>
 
-    <!-- Decorative planet -->
-    <div class="planet-wrap" aria-hidden="true">
-      <div class="planet">
-        <div class="planet-ring"></div>
-      </div>
+    <!-- Astronaut logo -->
+    <div class="hero-logo-wrap" aria-hidden="true">
+      <img src={`${base}logo-astronaut.png`} alt="ICT Exoticz astronaut mascot" class="hero-logo-img" width="460" height="460" />
     </div>
   </section>
 
@@ -277,32 +275,23 @@ const base = import.meta.env.BASE_URL;
     flex-shrink: 0;
   }
 
-  /* Decorative planet */
-  .planet-wrap {
+  /* Hero brand logo */
+  .hero-logo-wrap {
     position: absolute;
-    right: 5%;
+    right: 4%;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
     z-index: 0;
-    opacity: 0.18;
   }
 
-  .planet {
-    width: 320px; height: 320px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #38BDF8, #0369A1 50%, #020617 100%);
-    position: relative;
-    box-shadow: 0 0 80px rgba(56, 189, 248, 0.3), inset -30px -30px 60px rgba(0,0,0,0.5);
-  }
-
-  .planet-ring {
-    position: absolute;
-    width: 480px; height: 120px;
-    border-radius: 50%;
-    border: 18px solid rgba(56, 189, 248, 0.4);
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%) rotateX(75deg);
+  .hero-logo-img {
+    width: 420px;
+    height: 420px;
+    object-fit: contain;
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 0 40px rgba(56, 189, 248, 0.4)) drop-shadow(0 0 80px rgba(56, 189, 248, 0.2));
+    animation: float 7s ease-in-out infinite;
   }
 
   /* ── Categories ── */
@@ -479,7 +468,7 @@ const base = import.meta.env.BASE_URL;
     .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .categories-grid { grid-template-columns: 1fr; }
     .locations-grid { grid-template-columns: 1fr; }
-    .planet-wrap { display: none; }
+    .hero-logo-wrap { display: none; }
   }
 
   @media (max-width: 640px) {
