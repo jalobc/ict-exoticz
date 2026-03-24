@@ -7,32 +7,33 @@ const base = import.meta.env.BASE_URL;
 
   <!-- ── Hero ── -->
   <section class="hero">
-    <!-- Floating orbs -->
     <div class="hero-orb orb-1" aria-hidden="true"></div>
     <div class="hero-orb orb-2" aria-hidden="true"></div>
 
-    <div class="container hero-content">
-      <!-- Static astronaut -->
-    <div class="hero-astronaut" aria-hidden="true">
-      <img src={`${base}/astronaut-3d.png`} alt="" width="460" height="460" />
-    </div>
+    <div class="container hero-grid">
 
-    <div class="hero-eyebrow">
-        <span class="orbit-dot" aria-hidden="true"></span>
-        <span class="section-label" style="margin:0">Wichita, Kansas · Est. ICT</span>
+      <div class="hero-text">
+        <div class="hero-eyebrow">
+          <span class="orbit-dot" aria-hidden="true"></span>
+          <span class="section-label" style="margin:0">Wichita, Kansas · Est. ICT</span>
+        </div>
+        <h1>Welcome to<br /><span class="hero-brand">ICT Exoticz</span></h1>
+        <p class="hero-sub">Curated hemp-derived cannabinoids, stylish apparel, and exotic lifestyle products — making luxury accessible to everyone in the ICT.</p>
+        <div class="hero-actions">
+          <a href={`${base}products`} class="btn btn-primary">Shop Products</a>
+          <a href={`${base}locations`} class="btn btn-outline">Find a Location</a>
+        </div>
+        <p class="hero-notice">
+          <span class="notice-dot" aria-hidden="true"></span>
+          Must be 21+ to purchase cannabinoid products
+        </p>
       </div>
-      <h1>Welcome to<br /><span class="hero-brand">ICT Exoticz</span></h1>
-      <p class="hero-sub">Curated hemp-derived cannabinoids, stylish apparel, and exotic lifestyle products — making luxury accessible to everyone in the ICT.</p>
-      <div class="hero-actions">
-        <a href={`${base}products`} class="btn btn-primary">Shop Products</a>
-        <a href={`${base}locations`} class="btn btn-outline">Find a Location</a>
-      </div>
-      <p class="hero-notice">
-        <span class="notice-dot" aria-hidden="true"></span>
-        Must be 21+ to purchase cannabinoid products
-      </p>
-    </div>
 
+      <div class="hero-astronaut" aria-hidden="true">
+        <img src={`${base}/astronaut-3d.png`} alt="" width="420" height="420" />
+      </div>
+
+    </div>
   </section>
 
   <!-- ── Categories ── -->
@@ -172,9 +173,16 @@ const base = import.meta.env.BASE_URL;
   .hero {
     position: relative;
     min-height: 92vh;
-    display: flex;
-    align-items: center;
     overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 3rem;
+    min-height: 92vh;
+    padding-block: 5rem;
   }
 
   .hero-orb {
@@ -201,11 +209,10 @@ const base = import.meta.env.BASE_URL;
     50% { transform: translateY(-18px); }
   }
 
-  .hero-content {
+  .hero-text {
     position: relative;
     z-index: 1;
-    padding-block: 5rem;
-    max-width: 680px;
+    max-width: 620px;
   }
 
   .hero-eyebrow {
@@ -272,14 +279,13 @@ const base = import.meta.env.BASE_URL;
   }
 
 
-  /* Static hero astronaut */
+  /* Hero astronaut */
   .hero-astronaut {
-    position: absolute;
-    right: 4%;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    z-index: 0;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .hero-astronaut img {
@@ -461,6 +467,7 @@ const base = import.meta.env.BASE_URL;
 
   /* ── Responsive ── */
   @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; }
     .hero-astronaut { display: none; }
     .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .categories-grid { grid-template-columns: 1fr; }
