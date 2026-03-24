@@ -205,7 +205,7 @@ const base = import.meta.env.BASE_URL;
     position: relative;
     z-index: 1;
     padding-block: 5rem;
-    max-width: 680px;
+    max-width: 580px;
   }
 
   .hero-eyebrow {
@@ -275,16 +275,17 @@ const base = import.meta.env.BASE_URL;
   /* Static hero astronaut */
   .hero-astronaut {
     position: absolute;
-    right: 4%;
+    right: -20px;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
     z-index: 0;
+    opacity: 0.85;
   }
 
   .hero-astronaut img {
-    width: 420px;
-    height: 420px;
+    width: 340px;
+    height: 340px;
     object-fit: contain;
     filter: drop-shadow(0 0 40px rgba(56, 189, 248, 0.35)) drop-shadow(0 0 80px rgba(56, 189, 248, 0.15));
   }
