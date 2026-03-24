@@ -30,7 +30,7 @@ const base = import.meta.env.BASE_URL;
 
     <!-- Astronaut logo -->
     <div class="hero-logo-wrap" aria-hidden="true">
-      <img src={`${base}/logo-astronaut.png`} alt="ICT Exoticz astronaut mascot" class="hero-logo-img" width="460" height="460" />
+      <img src={`${base}/astronaut-3d.png`} alt="ICT Exoticz astronaut mascot" class="hero-logo-img" width="460" height="460" />
     </div>
   </section>
 
@@ -115,27 +115,6 @@ const base = import.meta.env.BASE_URL;
 
         <div class="glass-card location-card">
           <div class="loc-header">
-            <h3>ICT Exoticz</h3>
-            <span class="loc-badge">Broadway</span>
-          </div>
-          <address>2837 N Broadway St #100<br />Wichita, KS 67219</address>
-          <a href="tel:+13164131307" class="loc-phone">(316) 413-1307</a>
-          <div class="loc-hours">
-            <h4>Hours</h4>
-            <ul>
-              <li><span>Mon</span><span>4:20 PM – 8:00 PM</span></li>
-              <li><span>Tue</span><span class="closed">Closed</span></li>
-              <li><span>Wed – Thu</span><span>4:20 PM – 8:00 PM</span></li>
-              <li><span>Fri</span><span>4:20 PM – 10:00 PM</span></li>
-              <li><span>Sat</span><span>1:00 PM – 10:00 PM</span></li>
-              <li><span>Sun</span><span class="closed">Closed</span></li>
-            </ul>
-          </div>
-          <a href="https://www.google.com/maps/search/?api=1&query=2837+N+Broadway+St+%23100,+Wichita,+KS+67219" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;justify-content:center">Get Directions</a>
-        </div>
-
-        <div class="glass-card location-card">
-          <div class="loc-header">
             <h3>ICT Exoticz 2</h3>
             <span class="loc-badge">Seneca</span>
           </div>
@@ -149,6 +128,22 @@ const base = import.meta.env.BASE_URL;
             </ul>
           </div>
           <a href="https://www.google.com/maps/search/?api=1&query=3125+S+Seneca+St,+Wichita,+KS+67217" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;justify-content:center">Get Directions</a>
+        </div>
+
+        <div class="glass-card location-card">
+          <div class="loc-header">
+            <h3>ICT Exoticz 3</h3>
+            <span class="loc-badge">Sweetbriar</span>
+          </div>
+          <address>2020 W 21st St<br />Wichita, KS 67203</address>
+          <a href="tel:+13162459639" class="loc-phone">(316) 245-9639</a>
+          <div class="loc-hours">
+            <h4>Hours</h4>
+            <ul>
+              <li><span>Mon – Sun</span><span>12:00 PM – 10:00 PM</span></li>
+            </ul>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=2020+W+21st+St,+Wichita,+KS+67203" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;justify-content:center">Get Directions</a>
         </div>
 
       </div>
@@ -191,18 +186,18 @@ const base = import.meta.env.BASE_URL;
     width: 500px; height: 500px;
     background: rgba(56, 189, 248, 0.12);
     top: -100px; right: -50px;
-    animation: float 8s ease-in-out infinite;
+    animation: float 16s ease-in-out infinite;
   }
   .orb-2 {
     width: 350px; height: 350px;
     background: rgba(139, 92, 246, 0.1);
     bottom: 50px; left: -80px;
-    animation: float 10s ease-in-out infinite reverse;
+    animation: float 20s ease-in-out infinite reverse;
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-30px); }
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-18px); }
   }
 
   .hero-content {
@@ -291,7 +286,8 @@ const base = import.meta.env.BASE_URL;
     object-fit: contain;
     mix-blend-mode: screen;
     filter: drop-shadow(0 0 40px rgba(56, 189, 248, 0.4)) drop-shadow(0 0 80px rgba(56, 189, 248, 0.2));
-    animation: float 7s ease-in-out infinite;
+    animation: float 12s ease-in-out infinite;
+    will-change: transform;
   }
 
   /* ── Categories ── */
@@ -436,6 +432,7 @@ const base = import.meta.env.BASE_URL;
   .loc-hours li:last-child { border-bottom: none; }
   .loc-hours li span:first-child { color: var(--text-1); font-weight: 500; }
   .closed { color: var(--text-3) !important; }
+
 
   /* ── CTA ── */
   .cta-section { padding-block: 3rem 5rem; }
