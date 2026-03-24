@@ -1,42 +1,183 @@
 ---
 const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
 ---
 
 <footer>
-  <div class="footer-content">
-    <div class="footer-section">
-      <h3>ICT Exoticz</h3>
+  <div class="footer-inner container">
+    <div class="footer-brand">
+      <a href={base} class="footer-logo">
+        <span class="logo-ict">ICT</span><span class="logo-exoticz">Exoticz</span>
+      </a>
       <p>Your go-to shop for hemp-derived cannabinoids, stylish apparel, and exotic lifestyle products in Wichita, KS.</p>
     </div>
 
-    <div class="footer-section">
-      <h3>Locations</h3>
-      <p>
-        <strong>ICT Exoticz</strong><br />
-        2837 N Broadway St #100<br />
-        Wichita, KS 67219<br />
-        <a href="tel:+13164131307">(316) 413-1307</a>
-      </p>
-      <p>
-        <strong>ICT Exoticz 2</strong><br />
-        3125 S Seneca St<br />
-        Wichita, KS 67217<br />
-        <a href="tel:+13163122515">(316) 312-2515</a>
-      </p>
+    <div class="footer-col">
+      <h4>Locations</h4>
+      <ul>
+        <li>
+          <strong>ICT Exoticz</strong><br />
+          2837 N Broadway St #100<br />
+          Wichita, KS 67219<br />
+          <a href="tel:+13164131307">(316) 413-1307</a>
+        </li>
+        <li>
+          <strong>ICT Exoticz 2</strong><br />
+          3125 S Seneca St<br />
+          Wichita, KS 67217<br />
+          <a href="tel:+13163122515">(316) 312-2515</a>
+        </li>
+      </ul>
     </div>
 
-    <div class="footer-section">
-      <h3>Follow Us</h3>
-      <ul>
-        <li><a href="https://www.facebook.com/p/ICT-Exoticz-61554037832230/" target="_blank" rel="noopener">Facebook – ICT Exoticz</a></li>
-        <li><a href="https://www.facebook.com/p/ICT-Exoticz-2-61572496577319/" target="_blank" rel="noopener">Facebook – ICT Exoticz 2</a></li>
-        <li><a href="https://www.instagram.com/ictexoticz/" target="_blank" rel="noopener">Instagram – @ictexoticz</a></li>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href={`${base}`}>Home</a></li>
+        <li><a href={`${base}products`}>Products</a></li>
+        <li><a href={`${base}locations`}>Locations</a></li>
+        <li><a href={`${base}contact`}>Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <ul class="footer-links">
+        <li>
+          <a href="https://www.facebook.com/p/ICT-Exoticz-61554037832230/" target="_blank" rel="noopener">
+            Facebook – ICT Exoticz
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/p/ICT-Exoticz-2-61572496577319/" target="_blank" rel="noopener">
+            Facebook – ICT Exoticz 2
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/ictexoticz/" target="_blank" rel="noopener">
+            Instagram – @ictexoticz
+          </a>
+        </li>
       </ul>
     </div>
   </div>
 
   <div class="footer-bottom">
-    <p>&copy; {year} ICT Exoticz. All rights reserved. | Wichita, KS</p>
-    <p class="disclaimer">Must be 21+ to purchase hemp-derived cannabinoid products. These statements have not been evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <div class="container footer-bottom-inner">
+      <p>&copy; {year} ICT Exoticz. All rights reserved. | Wichita, KS</p>
+      <p class="disclaimer">
+        Must be 21+ to purchase hemp-derived cannabinoid products. These statements have not been evaluated by the FDA.
+        Not intended to diagnose, treat, cure, or prevent any disease.
+      </p>
+    </div>
   </div>
 </footer>
+
+<style>
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    margin-top: 5rem;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1fr 1fr;
+    gap: 3rem;
+    padding-top: 3.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .footer-logo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+  .logo-ict { color: var(--gold-light); }
+  .logo-exoticz { color: var(--text-1); }
+
+  .footer-brand p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 280px;
+  }
+
+  .footer-col h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    list-style: none;
+  }
+
+  .footer-col ul li {
+    font-size: 0.875rem;
+    color: var(--text-2);
+    line-height: 1.6;
+  }
+
+  .footer-col ul li strong {
+    display: block;
+    color: var(--text-1);
+    font-weight: 600;
+    margin-bottom: 0.1rem;
+  }
+
+  .footer-links a {
+    font-size: 0.875rem;
+    color: var(--text-2);
+    transition: color 0.15s;
+  }
+  .footer-links a:hover { color: var(--accent-light); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-block: 1.25rem;
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.8rem;
+    color: var(--text-3);
+  }
+
+  .disclaimer {
+    max-width: 600px;
+    text-align: right;
+  }
+
+  @media (max-width: 900px) {
+    .footer-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 540px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+    .footer-bottom-inner { flex-direction: column; }
+    .disclaimer { text-align: left; }
+  }
+</style>

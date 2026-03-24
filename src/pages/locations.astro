@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 const locations = [
   {
     name: 'ICT Exoticz',
+    label: 'Broadway',
     address: '2837 N Broadway St #100',
     city: 'Wichita, KS 67219',
     phone: '(316) 413-1307',
@@ -23,6 +24,7 @@ const locations = [
   },
   {
     name: 'ICT Exoticz 2',
+    label: 'Seneca',
     address: '3125 S Seneca St',
     city: 'Wichita, KS 67217',
     phone: '(316) 312-2515',
@@ -45,56 +47,226 @@ const locations = [
 
 <Layout title="Locations" description="Find ICT Exoticz locations in Wichita, KS. Two stores with hours, addresses, and contact info.">
 
-  <section class="page-header">
-    <h1>Our Locations</h1>
-    <p>Two convenient locations in Wichita, KS to serve you.</p>
-  </section>
+  <div class="page-header">
+    <div class="container">
+      <span class="section-label">Wichita, Kansas</span>
+      <h1>Our Locations</h1>
+      <p>Two convenient locations in Wichita, KS to serve you.</p>
+    </div>
+  </div>
 
-  <section class="locations">
-    {locations.map(loc => (
-      <div class="location">
-        <h2>{loc.name}</h2>
+  <section class="section">
+    <div class="container">
+      <div class="locations-list">
+        {locations.map(loc => (
+          <div class="location-block">
+            <div class="loc-title-row">
+              <h2>{loc.name}</h2>
+              <span class="loc-badge">{loc.label}</span>
+            </div>
 
-        <div class="location-details">
-          <div class="location-info">
-            <h3>Address</h3>
-            <address>
-              {loc.address}<br />
-              {loc.city}
-            </address>
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${loc.mapQuery}`}
-              target="_blank"
-              rel="noopener"
-            >
-              Get Directions on Google Maps
-            </a>
+            <div class="location-details">
+              <div class="loc-info-col">
 
-            <h3>Contact</h3>
-            <p><a href={loc.phoneHref}>{loc.phone}</a></p>
-            {loc.email && <p><a href={`mailto:${loc.email}`}>{loc.email}</a></p>}
+                <div class="info-group">
+                  <h4>Address</h4>
+                  <address>
+                    {loc.address}<br />
+                    {loc.city}
+                  </address>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${loc.mapQuery}`}
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn-outline map-btn"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Get Directions
+                  </a>
+                </div>
 
-            <h3>Social Media</h3>
-            <p><a href={loc.facebook} target="_blank" rel="noopener">Facebook Page</a></p>
-            <p><a href="https://www.instagram.com/ictexoticz/" target="_blank" rel="noopener">Instagram – @ictexoticz</a></p>
+                <div class="info-group">
+                  <h4>Contact</h4>
+                  <a href={loc.phoneHref} class="contact-link phone-link">{loc.phone}</a>
+                  {loc.email && (
+                    <a href={`mailto:${loc.email}`} class="contact-link">{loc.email.toLowerCase()}</a>
+                  )}
+                </div>
+
+                <div class="info-group">
+                  <h4>Social Media</h4>
+                  <a href={loc.facebook} target="_blank" rel="noopener" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    Facebook Page
+                  </a>
+                  <a href="https://www.instagram.com/ictexoticz/" target="_blank" rel="noopener" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    Instagram – @ictexoticz
+                  </a>
+                </div>
+
+              </div>
+
+              <div class="loc-hours-col">
+                <h4>Hours of Operation</h4>
+                <table class="hours-table" aria-label={`${loc.name} hours of operation`}>
+                  <tbody>
+                    {loc.hours.map(({ day, hours }) => (
+                      <tr class={hours === 'Closed' ? 'row-closed' : ''}>
+                        <td class="day-cell">{day}</td>
+                        <td class="hours-cell">{hours}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
-
-          <div class="location-hours">
-            <h3>Hours of Operation</h3>
-            <table>
-              <tbody>
-                {loc.hours.map(({ day, hours }) => (
-                  <tr class={hours === 'Closed' ? 'closed' : ''}>
-                    <td>{day}</td>
-                    <td>{hours}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        ))}
       </div>
-    ))}
+    </div>
   </section>
 
 </Layout>
+
+<style>
+  .section { padding-block: 4rem 5rem; }
+
+  .locations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .location-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    transition: border-color 0.2s;
+  }
+  .location-block:hover { border-color: var(--border-light); }
+
+  .loc-title-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .loc-badge {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--gold-glow);
+    border: 1px solid var(--gold);
+    padding: 0.25rem 0.65rem;
+    border-radius: 100px;
+  }
+
+  .location-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .loc-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .info-group h4 {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--text-3);
+    margin-bottom: 0.6rem;
+  }
+
+  .info-group address {
+    font-size: 0.95rem;
+    color: var(--text-2);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+
+  .map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    padding: 0.55rem 1.1rem;
+  }
+
+  .contact-link {
+    display: block;
+    font-size: 1rem;
+    color: var(--text-1);
+    margin-bottom: 0.35rem;
+    transition: color 0.15s;
+  }
+  .phone-link {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+  }
+  .contact-link:hover { color: var(--accent-light); }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-2);
+    margin-bottom: 0.5rem;
+    transition: color 0.15s;
+  }
+  .social-link:hover { color: var(--accent-light); }
+
+  /* Hours table */
+  .loc-hours-col h4 {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--text-3);
+    margin-bottom: 0.75rem;
+  }
+
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .hours-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+  .hours-table tr:last-child { border-bottom: none; }
+
+  .day-cell {
+    padding: 0.6rem 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-1);
+    width: 50%;
+  }
+
+  .hours-cell {
+    padding: 0.6rem 0;
+    font-size: 0.875rem;
+    color: var(--text-2);
+    text-align: right;
+  }
+
+  .row-closed .day-cell,
+  .row-closed .hours-cell {
+    color: var(--text-3);
+  }
+
+  @media (max-width: 768px) {
+    .location-details { grid-template-columns: 1fr; }
+    .location-block { padding: 1.75rem; }
+  }
+</style>
