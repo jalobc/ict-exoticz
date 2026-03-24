@@ -16,15 +16,13 @@ const base = import.meta.env.BASE_URL;
       <h4>Locations</h4>
       <ul>
         <li>
-          <strong>ICT Exoticz</strong><br />
-          2837 N Broadway St #100<br />
-          Wichita, KS 67219<br />
+          <strong>ICT Exoticz</strong>
+          2837 N Broadway St #100<br />Wichita, KS 67219<br />
           <a href="tel:+13164131307">(316) 413-1307</a>
         </li>
         <li>
-          <strong>ICT Exoticz 2</strong><br />
-          3125 S Seneca St<br />
-          Wichita, KS 67217<br />
+          <strong>ICT Exoticz 2</strong>
+          3125 S Seneca St<br />Wichita, KS 67217<br />
           <a href="tel:+13163122515">(316) 312-2515</a>
         </li>
       </ul>
@@ -43,21 +41,9 @@ const base = import.meta.env.BASE_URL;
     <div class="footer-col">
       <h4>Follow Us</h4>
       <ul class="footer-links">
-        <li>
-          <a href="https://www.facebook.com/p/ICT-Exoticz-61554037832230/" target="_blank" rel="noopener">
-            Facebook – ICT Exoticz
-          </a>
-        </li>
-        <li>
-          <a href="https://www.facebook.com/p/ICT-Exoticz-2-61572496577319/" target="_blank" rel="noopener">
-            Facebook – ICT Exoticz 2
-          </a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/ictexoticz/" target="_blank" rel="noopener">
-            Instagram – @ictexoticz
-          </a>
-        </li>
+        <li><a href="https://www.facebook.com/p/ICT-Exoticz-61554037832230/" target="_blank" rel="noopener">Facebook – ICT Exoticz</a></li>
+        <li><a href="https://www.facebook.com/p/ICT-Exoticz-2-61572496577319/" target="_blank" rel="noopener">Facebook – ICT Exoticz 2</a></li>
+        <li><a href="https://www.instagram.com/ictexoticz/" target="_blank" rel="noopener">Instagram – @ictexoticz</a></li>
       </ul>
     </div>
   </div>
@@ -65,18 +51,17 @@ const base = import.meta.env.BASE_URL;
   <div class="footer-bottom">
     <div class="container footer-bottom-inner">
       <p>&copy; {year} ICT Exoticz. All rights reserved. | Wichita, KS</p>
-      <p class="disclaimer">
-        Must be 21+ to purchase hemp-derived cannabinoid products. These statements have not been evaluated by the FDA.
-        Not intended to diagnose, treat, cure, or prevent any disease.
-      </p>
+      <p class="disclaimer">Must be 21+ to purchase hemp-derived cannabinoid products. Not evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent any disease.</p>
     </div>
   </div>
 </footer>
 
 <style>
   footer {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
+    background: rgba(5, 5, 9, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--glass-border);
     margin-top: 5rem;
   }
 
@@ -89,50 +74,41 @@ const base = import.meta.env.BASE_URL;
   }
 
   .footer-logo {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Rubik', sans-serif;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 800;
     text-decoration: none;
     display: inline-block;
     margin-bottom: 1rem;
   }
-  .logo-ict { color: var(--gold-light); }
+  .logo-ict   { color: var(--accent); }
   .logo-exoticz { color: var(--text-1); }
 
   .footer-brand p {
-    font-size: 0.9rem;
-    line-height: 1.6;
+    font-size: 0.875rem;
+    line-height: 1.65;
     max-width: 280px;
   }
 
-  .footer-col h4 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-3);
-    margin-bottom: 1rem;
-  }
+  .footer-col h4 { margin-bottom: 1rem; }
 
   .footer-col ul {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    list-style: none;
   }
 
   .footer-col ul li {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     color: var(--text-2);
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
   .footer-col ul li strong {
     display: block;
     color: var(--text-1);
     font-weight: 600;
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.2rem;
   }
 
   .footer-links a {
@@ -140,10 +116,10 @@ const base = import.meta.env.BASE_URL;
     color: var(--text-2);
     transition: color 0.15s;
   }
-  .footer-links a:hover { color: var(--accent-light); }
+  .footer-links a:hover { color: var(--accent); }
 
   .footer-bottom {
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--glass-border);
     padding-block: 1.25rem;
   }
 
@@ -154,29 +130,15 @@ const base = import.meta.env.BASE_URL;
     gap: 0.5rem;
   }
 
-  .footer-bottom p {
-    font-size: 0.8rem;
-    color: var(--text-3);
-  }
-
-  .disclaimer {
-    max-width: 600px;
-    text-align: right;
-  }
+  .footer-bottom p { font-size: 0.78rem; color: var(--text-3); }
+  .disclaimer { max-width: 580px; text-align: right; }
 
   @media (max-width: 900px) {
-    .footer-inner {
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .footer-brand { grid-column: 1 / -1; }
   }
-
   @media (max-width: 540px) {
-    .footer-inner {
-      grid-template-columns: 1fr;
-      gap: 1.75rem;
-    }
+    .footer-inner { grid-template-columns: 1fr; gap: 1.75rem; }
     .footer-bottom-inner { flex-direction: column; }
     .disclaimer { text-align: left; }
   }
