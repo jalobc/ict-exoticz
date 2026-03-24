@@ -12,7 +12,12 @@ const base = import.meta.env.BASE_URL;
     <div class="hero-orb orb-2" aria-hidden="true"></div>
 
     <div class="container hero-content">
-      <div class="hero-eyebrow">
+      <!-- Static astronaut -->
+    <div class="hero-astronaut" aria-hidden="true">
+      <img src={`${base}/astronaut-3d.png`} alt="" width="460" height="460" />
+    </div>
+
+    <div class="hero-eyebrow">
         <span class="orbit-dot" aria-hidden="true"></span>
         <span class="section-label" style="margin:0">Wichita, Kansas · Est. ICT</span>
       </div>
@@ -267,6 +272,23 @@ const base = import.meta.env.BASE_URL;
   }
 
 
+  /* Static hero astronaut */
+  .hero-astronaut {
+    position: absolute;
+    right: 4%;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-astronaut img {
+    width: 420px;
+    height: 420px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 40px rgba(56, 189, 248, 0.35)) drop-shadow(0 0 80px rgba(56, 189, 248, 0.15));
+  }
+
   /* ── Categories ── */
   .categories-grid {
     display: grid;
@@ -439,6 +461,7 @@ const base = import.meta.env.BASE_URL;
 
   /* ── Responsive ── */
   @media (max-width: 960px) {
+    .hero-astronaut { display: none; }
     .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .categories-grid { grid-template-columns: 1fr; }
     .locations-grid { grid-template-columns: 1fr; }
