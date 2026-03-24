@@ -28,10 +28,6 @@ const base = import.meta.env.BASE_URL;
       </p>
     </div>
 
-    <!-- Astronaut logo -->
-    <div class="hero-logo-wrap" aria-hidden="true">
-      <img src={`${base}/astronaut-3d.png`} alt="ICT Exoticz astronaut mascot" class="hero-logo-img" width="460" height="460" />
-    </div>
   </section>
 
   <!-- ── Categories ── -->
@@ -270,24 +266,6 @@ const base = import.meta.env.BASE_URL;
     flex-shrink: 0;
   }
 
-  /* Hero brand logo */
-  .hero-logo-wrap {
-    position: absolute;
-    right: 4%;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .hero-logo-img {
-    width: 420px;
-    height: 420px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 40px rgba(56, 189, 248, 0.4)) drop-shadow(0 0 80px rgba(56, 189, 248, 0.2));
-    animation: float 12s ease-in-out infinite;
-    will-change: transform;
-  }
 
   /* ── Categories ── */
   .categories-grid {
@@ -464,7 +442,6 @@ const base = import.meta.env.BASE_URL;
     .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .categories-grid { grid-template-columns: 1fr; }
     .locations-grid { grid-template-columns: 1fr; }
-    .hero-logo-wrap { display: none; }
   }
 
   @media (max-width: 640px) {
