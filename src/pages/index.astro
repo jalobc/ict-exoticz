@@ -483,12 +483,14 @@ const base = import.meta.env.BASE_URL;
     border-color: var(--accent) !important;
     box-shadow: 0 0 0 1px var(--accent), 0 0 24px rgba(56,189,248,0.2);
     position: relative;
+    overflow: visible;
+    margin-top: 1rem;
   }
 
   .deal-today::before {
     content: "Today's Deal";
     position: absolute;
-    top: -0.65rem;
+    top: -1rem;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Rubik', sans-serif;
@@ -498,9 +500,11 @@ const base = import.meta.env.BASE_URL;
     text-transform: uppercase;
     color: var(--accent);
     background: var(--bg-1);
-    padding: 0.1rem 0.6rem;
+    border: 1px solid var(--accent);
+    padding: 0.2rem 0.75rem;
     border-radius: 100px;
     white-space: nowrap;
+    z-index: 1;
   }
 
   @media (max-width: 900px) {
