@@ -160,6 +160,52 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
+  <!-- ── Daily Deals ── -->
+  <section class="section deals-section">
+    <div class="container">
+      <span class="section-label">Save Every Day</span>
+      <h2>Daily Deals</h2>
+      <div class="divider"></div>
+      <p class="deals-sub">A new deal every day of the week. Stop in and save.</p>
+      <div class="deals-grid">
+
+        <div class="glass-card deal-card" data-days="1,4">
+          <div class="deal-days">Mon &amp; Thu</div>
+          <div class="deal-discount">10% OFF</div>
+          <div class="deal-desc">All Edibles</div>
+        </div>
+
+        <div class="glass-card deal-card" data-days="2,5">
+          <div class="deal-days">Tue &amp; Fri</div>
+          <div class="deal-discount">10% OFF</div>
+          <div class="deal-desc">Flower Sale</div>
+        </div>
+
+        <div class="glass-card deal-card" data-days="3,6">
+          <div class="deal-days">Wed &amp; Sat</div>
+          <div class="deal-discount">BOGO</div>
+          <div class="deal-desc">Buy 1/8 of Wax, get 1g free — or 10% off</div>
+        </div>
+
+        <div class="glass-card deal-card" data-days="0">
+          <div class="deal-days">Sunday</div>
+          <div class="deal-discount">10% OFF</div>
+          <div class="deal-desc">All Kratom &amp; THCA Vapes</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Highlight today's deal
+    const today = new Date().getDay(); // 0=Sun, 1=Mon, ...
+    document.querySelectorAll<HTMLElement>('.deal-card').forEach(card => {
+      const days = card.dataset.days?.split(',').map(Number) ?? [];
+      if (days.includes(today)) card.classList.add('deal-today');
+    });
+  </script>
+
   <!-- ── CTA ── -->
   <section class="cta-section">
     <div class="container">
@@ -380,6 +426,88 @@ const base = import.meta.env.BASE_URL;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 600;
+  }
+
+  /* ── Daily Deals ── */
+  .deals-sub {
+    color: var(--text-2);
+    margin-bottom: 2rem;
+  }
+
+  .deals-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+
+  .deal-card {
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .deal-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .deal-days {
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-2);
+  }
+
+  .deal-discount {
+    font-family: 'Rubik', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin: 0.25rem 0;
+  }
+
+  .deal-desc {
+    font-size: 0.9rem;
+    color: var(--text-1);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .deal-today {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 1px var(--accent), 0 0 24px rgba(56,189,248,0.2);
+    position: relative;
+  }
+
+  .deal-today::before {
+    content: "Today's Deal";
+    position: absolute;
+    top: -0.65rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--bg-1);
+    padding: 0.1rem 0.6rem;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 900px) {
+    .deals-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .deals-grid { grid-template-columns: 1fr; }
   }
 
   /* ── Locations ── */
