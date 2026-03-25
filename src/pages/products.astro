@@ -14,7 +14,9 @@ const cannabinoidProducts = [
 ];
 
 const lifestyleProducts = [
-  { name: 'Accessories', description: 'Stand-out accessories to complete your lifestyle. Constantly updated with the latest trends.', tag: null, icon: '✨' },
+  { name: 'Nicotine Vapes', description: 'A wide selection of nicotine vapes and disposables in popular brands and flavors. Ask our staff for the latest arrivals.', tag: null, icon: '🔋' },
+  { name: 'Glass', description: 'Quality glass pieces for every preference and budget. Pipes, bubblers, and more — always a fresh selection in store.', tag: null, icon: '🫧' },
+  { name: 'Flower Accessories', description: 'Everything you need to enjoy your flower. Rolling papers, grinders, trays, and more.', tag: null, icon: '🌀' },
   { name: 'Lifestyle & Exotic Items', description: "A rotating selection of unique exotic products that elevate your everyday. Come in to see what's new.", tag: 'Always New', icon: '🛍️' },
 ];
 ---
@@ -54,8 +56,8 @@ const lifestyleProducts = [
 
   <section class="section lifestyle-section">
     <div class="container">
-      <span class="section-label">Accessories · Lifestyle</span>
-      <h2>Accessories & Lifestyle</h2>
+      <span class="section-label">Vapes · Glass · Accessories · Lifestyle</span>
+      <h2>Accessories & More</h2>
       <div class="divider"></div>
       <div class="product-grid lifestyle-grid">
         {lifestyleProducts.map(p => (
@@ -131,7 +133,7 @@ const lifestyleProducts = [
     margin-top: 2rem;
   }
 
-  .lifestyle-grid { grid-template-columns: repeat(3, 1fr); }
+  .lifestyle-grid { grid-template-columns: repeat(4, 1fr); }
 
   .product-card { padding: 2rem; }
   .product-card h3 { margin-bottom: 0.6rem; }
@@ -181,6 +183,9 @@ const lifestyleProducts = [
     .product-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 900px) {
+    .lifestyle-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
     .lifestyle-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 540px) {
