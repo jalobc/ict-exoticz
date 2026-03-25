@@ -438,6 +438,7 @@ const base = import.meta.env.BASE_URL;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.25rem;
+    padding-top: 1.25rem;
   }
 
   .deal-card {
@@ -484,13 +485,12 @@ const base = import.meta.env.BASE_URL;
     box-shadow: 0 0 0 1px var(--accent), 0 0 24px rgba(56,189,248,0.2);
     position: relative;
     overflow: visible;
-    margin-top: 1rem;
   }
 
   .deal-today::before {
     content: "Today's Deal";
     position: absolute;
-    top: -1rem;
+    top: -1.35rem;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Rubik', sans-serif;
