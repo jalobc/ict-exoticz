@@ -102,9 +102,26 @@ const base = import.meta.env.BASE_URL;
   <section class="section">
     <div class="container">
       <span class="section-label">Find Us</span>
-      <h2>Two Wichita Locations</h2>
+      <h2>Three Wichita Locations</h2>
       <div class="divider"></div>
       <div class="locations-grid">
+
+        <div class="glass-card location-card">
+          <div class="loc-header">
+            <h3>ICT Exoticz</h3>
+            <span class="loc-badge">Central Ave</span>
+          </div>
+          <address>2001 E Central Ave<br />Wichita, KS 67214</address>
+          <a href="tel:+13164945534" class="loc-phone">(316) 494-5534</a>
+          <div class="loc-hours">
+            <h4>Hours</h4>
+            <ul>
+              <li><span>Monday</span><span>Closed</span></li>
+              <li><span>Tue – Sun</span><span>12:00 PM – 8:00 PM</span></li>
+            </ul>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=2001+E+Central+Ave,+Wichita,+KS+67214" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;justify-content:center">Get Directions</a>
+        </div>
 
         <div class="glass-card location-card">
           <div class="loc-header">
@@ -368,7 +385,7 @@ const base = import.meta.env.BASE_URL;
   /* ── Locations ── */
   .locations-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
     margin-top: 2.5rem;
   }
