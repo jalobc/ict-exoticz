@@ -2,19 +2,42 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Contact" description="Get in touch with ICT Exoticz in Wichita, KS. Two locations, phone numbers, and social media.">
+<Layout title="Contact" description="Get in touch with ICT Exoticz in Wichita, KS. Three locations, phone numbers, and social media.">
 
   <div class="page-header">
     <div class="container">
       <span class="section-label">Get In Touch</span>
       <h1>Contact Us</h1>
-      <p>Have a question? Reach out to us or stop by one of our Wichita locations.</p>
+      <p>Have a question? Reach out to us or stop by one of our three Wichita locations.</p>
     </div>
   </div>
 
   <section class="section">
     <div class="container">
       <div class="contact-grid">
+
+        <div class="glass-card contact-card">
+          <div class="card-top">
+            <h2>ICT Exoticz</h2>
+            <span class="loc-badge">Central Ave</span>
+          </div>
+          <div class="contact-detail">
+            <h4>Address</h4>
+            <address>2001 E Central Ave<br />Wichita, KS 67214</address>
+            <a href="https://www.google.com/maps/search/?api=1&query=2001+E+Central+Ave,+Wichita,+KS+67214" target="_blank" rel="noopener" class="map-link">View on Google Maps &rarr;</a>
+          </div>
+          <div class="contact-detail">
+            <h4>Phone</h4>
+            <a href="tel:+13164945534" class="phone-num">(316) 494-5534</a>
+          </div>
+          <div class="contact-detail">
+            <h4>Hours</h4>
+            <ul class="hours-list">
+              <li><span>Monday</span><span class="closed">Closed</span></li>
+              <li><span>Tuesday – Sunday</span><span>12:00 PM – 8:00 PM</span></li>
+            </ul>
+          </div>
+        </div>
 
         <div class="glass-card contact-card">
           <div class="card-top">
@@ -94,7 +117,7 @@ import Layout from '../layouts/Layout.astro';
 <style>
   .section { padding-block: 4rem 5rem; }
 
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 1.25rem; }
 
   .contact-card { padding: 2.25rem; display: flex; flex-direction: column; gap: 1.5rem; }
 
@@ -135,6 +158,7 @@ import Layout from '../layouts/Layout.astro';
   .hours-list li span:first-child { color: var(--text-1); font-weight: 500; }
   .hours-list li span:last-child { color: var(--text-2); }
   .hours-list li.c span { color: var(--text-3) !important; }
+  .closed { color: var(--text-3) !important; }
 
   .social-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-2); transition: color 0.15s; }
   .social-link:hover { color: var(--accent); }
@@ -144,6 +168,9 @@ import Layout from '../layouts/Layout.astro';
   .ig-inner h3 { margin-bottom: 0.3rem; }
   .ig-inner p  { font-size: 0.9rem; }
 
+  @media (max-width: 1024px) {
+    .contact-grid { grid-template-columns: 1fr 1fr; }
+  }
   @media (max-width: 768px) {
     .contact-grid { grid-template-columns: 1fr; }
     .ig-inner { flex-direction: column; align-items: flex-start; }
