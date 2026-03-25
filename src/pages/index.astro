@@ -124,7 +124,7 @@ const base = import.meta.env.BASE_URL;
         <h2>Wichita's Premier Destination for Exotic Products</h2>
         <div class="divider"></div>
         <p>ICT Exoticz is Wichita's go-to destination for unique products. We carry a curated selection of exotic items designed to elevate your lifestyle — from premium hemp-derived cannabinoid products to unique lifestyle goods.</p>
-        <p style="margin-top:1rem">With two convenient locations in Wichita, KS, we're here to serve you with knowledgeable staff and a welcoming atmosphere. We believe in making quality products accessible to everyone in the ICT community.</p>
+        <p style="margin-top:1rem">With three convenient locations in Wichita, KS, we're here to serve you with knowledgeable staff and a welcoming atmosphere. We believe in making quality products accessible to everyone in the ICT community.</p>
         <a href={`${base}locations`} class="btn btn-outline" style="margin-top:1.75rem">Our Locations</a>
       </div>
       <div class="about-stats">
@@ -206,6 +206,32 @@ const base = import.meta.env.BASE_URL;
           <a href="https://www.google.com/maps/search/?api=1&query=2020+W+21st+St,+Wichita,+KS+67203" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;justify-content:center">Get Directions</a>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Trust Badges ── -->
+  <section class="trust-section">
+    <div class="container trust-grid">
+      <div class="trust-item">
+        <span class="trust-icon">🧪</span>
+        <span class="trust-label">Lab Tested</span>
+        <span class="trust-sub">All cannabinoid products are third-party lab tested for purity and potency</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">🔞</span>
+        <span class="trust-label">21+ Only</span>
+        <span class="trust-sub">Hemp-derived cannabinoid products require valid ID — no exceptions</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">⚖️</span>
+        <span class="trust-label">Farm Bill Compliant</span>
+        <span class="trust-sub">All products comply with the 2018 Farm Bill and contain less than 0.3% Delta-9 THC</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">🌿</span>
+        <span class="trust-label">Hemp-Derived</span>
+        <span class="trust-sub">100% hemp-derived cannabinoids, responsibly sourced and carefully curated</span>
       </div>
     </div>
   </section>
@@ -347,8 +373,8 @@ const base = import.meta.env.BASE_URL;
   }
 
   .hero-astronaut img {
-    width: 420px;
-    height: 420px;
+    width: 520px;
+    height: 520px;
     object-fit: contain;
     filter: drop-shadow(0 0 40px rgba(56, 189, 248, 0.35)) drop-shadow(0 0 80px rgba(56, 189, 248, 0.15));
   }
@@ -579,6 +605,50 @@ const base = import.meta.env.BASE_URL;
   .loc-hours li span:first-child { color: var(--text-1); font-weight: 500; }
   .closed { color: var(--text-3) !important; }
 
+
+  /* ── Trust Badges ── */
+  .trust-section {
+    padding-block: 3rem;
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+    background: rgba(56, 189, 248, 0.03);
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+  }
+
+  .trust-icon { font-size: 2rem; }
+
+  .trust-label {
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-1);
+  }
+
+  .trust-sub {
+    font-size: 0.78rem;
+    color: var(--text-3);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .trust-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  }
+  @media (max-width: 480px) {
+    .trust-grid { grid-template-columns: 1fr; }
+  }
 
   /* ── CTA ── */
   .cta-section { padding-block: 3rem 5rem; }

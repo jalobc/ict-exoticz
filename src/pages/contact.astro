@@ -26,6 +26,13 @@ import Layout from '../layouts/Layout.astro';
             <address>2001 E Central Ave<br />Wichita, KS 67214</address>
             <a href="https://www.google.com/maps/search/?api=1&query=2001+E+Central+Ave,+Wichita,+KS+67214" target="_blank" rel="noopener" class="map-link">View on Google Maps &rarr;</a>
           </div>
+          <div class="map-embed">
+            <iframe
+              title="ICT Exoticz location map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.8!2d-97.298!3d37.694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87bae4b6b6b6b6b7%3A0x0!2s2001+E+Central+Ave%2C+Wichita%2C+KS+67214!5e0!3m2!1sen!2sus!4v1"
+              width="100%" height="180" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
           <div class="contact-detail">
             <h4>Phone</h4>
             <a href="tel:+13164945534" class="phone-num">(316) 494-5534</a>
@@ -48,6 +55,13 @@ import Layout from '../layouts/Layout.astro';
             <h4>Address</h4>
             <address>3125 S Seneca St<br />Wichita, KS 67217</address>
             <a href="https://www.google.com/maps/search/?api=1&query=3125+S+Seneca+St,+Wichita,+KS+67217" target="_blank" rel="noopener" class="map-link">View on Google Maps &rarr;</a>
+          </div>
+          <div class="map-embed">
+            <iframe
+              title="ICT Exoticz 2 location map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3147.2!2d-97.358!3d37.647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87bae5c5c5c5c5c5%3A0x0!2s3125+S+Seneca+St%2C+Wichita%2C+KS+67217!5e0!3m2!1sen!2sus!4v1"
+              width="100%" height="180" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
           </div>
           <div class="contact-detail">
             <h4>Phone</h4>
@@ -82,6 +96,13 @@ import Layout from '../layouts/Layout.astro';
             <h4>Address</h4>
             <address>2020 W 21st St<br />Wichita, KS 67203</address>
             <a href="https://www.google.com/maps/search/?api=1&query=2020+W+21st+St,+Wichita,+KS+67203" target="_blank" rel="noopener" class="map-link">View on Google Maps &rarr;</a>
+          </div>
+          <div class="map-embed">
+            <iframe
+              title="ICT Exoticz 3 location map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.5!2d-97.373!3d37.700!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87bae3a3a3a3a3a3%3A0x0!2s2020+W+21st+St%2C+Wichita%2C+KS+67203!5e0!3m2!1sen!2sus!4v1"
+              width="100%" height="180" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
           </div>
           <div class="contact-detail">
             <h4>Phone</h4>
@@ -159,6 +180,17 @@ import Layout from '../layouts/Layout.astro';
   .hours-list li span:last-child { color: var(--text-2); }
   .hours-list li.c span { color: var(--text-3) !important; }
   .closed { color: var(--text-3) !important; }
+
+  .map-embed {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+  }
+
+  .map-embed iframe {
+    display: block;
+    filter: invert(90%) hue-rotate(180deg);
+  }
 
   .social-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-2); transition: color 0.15s; }
   .social-link:hover { color: var(--accent); }

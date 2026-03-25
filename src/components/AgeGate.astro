@@ -1,0 +1,136 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<div id="age-gate" class="age-gate" role="dialog" aria-modal="true" aria-labelledby="age-gate-title">
+  <div class="age-gate-backdrop"></div>
+  <div class="age-gate-modal glass-card">
+    <img src={`${base}/logo-astronaut.png`} alt="" class="age-gate-logo" width="90" height="90" />
+    <h2 id="age-gate-title">Welcome to ICT Exoticz</h2>
+    <p>You must be 21 years of age or older to enter this site.</p>
+    <p class="age-gate-sub">By entering, you confirm you are 21+ and agree to our terms.</p>
+    <div class="age-gate-actions">
+      <button id="age-gate-yes" class="btn btn-primary">I am 21 or older</button>
+      <button id="age-gate-no" class="btn btn-outline">I am under 21</button>
+    </div>
+    <p class="age-gate-notice">This site contains information about hemp-derived cannabinoid products.</p>
+  </div>
+</div>
+
+<div id="age-gate-denied" class="age-gate age-gate-denied" aria-hidden="true">
+  <div class="age-gate-backdrop"></div>
+  <div class="age-gate-modal glass-card">
+    <h2>Sorry, you must be 21+</h2>
+    <p>You must be 21 years of age or older to access this site.</p>
+  </div>
+</div>
+
+<script>
+  const STORAGE_KEY = 'ict_age_verified';
+  const gate = document.getElementById('age-gate') as HTMLElement;
+  const denied = document.getElementById('age-gate-denied') as HTMLElement;
+
+  // Show gate only if not previously verified
+  if (sessionStorage.getItem(STORAGE_KEY) === 'true') {
+    gate.style.display = 'none';
+  }
+
+  document.getElementById('age-gate-yes')?.addEventListener('click', () => {
+    sessionStorage.setItem(STORAGE_KEY, 'true');
+    gate.classList.add('age-gate-exit');
+    setTimeout(() => gate.style.display = 'none', 400);
+  });
+
+  document.getElementById('age-gate-no')?.addEventListener('click', () => {
+    gate.style.display = 'none';
+    denied.style.display = 'flex';
+    denied.removeAttribute('aria-hidden');
+  });
+</script>
+
+<style>
+  .age-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+
+  .age-gate-denied {
+    display: none;
+  }
+
+  .age-gate-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(3, 5, 15, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .age-gate-modal {
+    position: relative;
+    z-index: 1;
+    max-width: 440px;
+    width: 100%;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 0 60px rgba(56, 189, 248, 0.1);
+  }
+
+  .age-gate-logo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.5));
+    margin-bottom: 0.5rem;
+  }
+
+  .age-gate-modal h2 {
+    font-size: 1.6rem;
+    margin: 0;
+  }
+
+  .age-gate-modal p {
+    color: var(--text-2);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .age-gate-sub {
+    font-size: 0.8rem !important;
+    color: var(--text-3) !important;
+  }
+
+  .age-gate-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .age-gate-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .age-gate-notice {
+    font-size: 0.72rem !important;
+    color: var(--text-3) !important;
+    margin-top: 0.5rem;
+  }
+
+  .age-gate-exit {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+</style>
