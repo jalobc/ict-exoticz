@@ -36,6 +36,52 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
+  <!-- ── Daily Deals ── -->
+  <section class="section deals-section">
+    <div class="container">
+      <span class="section-label">Save Every Day</span>
+      <h2>Daily Deals</h2>
+      <div class="divider"></div>
+      <p class="deals-sub">A new deal every day of the week. Stop in and save.</p>
+      <div class="deals-grid">
+
+        <div class="glass-card deal-card" data-days="1,4">
+          <div class="deal-days">Mon &amp; Thu</div>
+          <div class="deal-discount">10% OFF</div>
+          <div class="deal-desc">All Edibles</div>
+        </div>
+
+        <div class="glass-card deal-card" data-days="2,5">
+          <div class="deal-days">Tue &amp; Fri</div>
+          <div class="deal-discount">10% OFF</div>
+          <div class="deal-desc">Flower Sale</div>
+        </div>
+
+        <div class="glass-card deal-card" data-days="3,6">
+          <div class="deal-days">Wed &amp; Sat</div>
+          <div class="deal-discount">BOGO</div>
+          <div class="deal-desc">Buy 1/8 of Wax, get 1g free — or 10% off</div>
+        </div>
+
+        <div class="glass-card deal-card" data-days="0">
+          <div class="deal-days">Sunday</div>
+          <div class="deal-discount">10% OFF</div>
+          <div class="deal-desc">All Kratom &amp; THCA Vapes</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Highlight today's deal
+    const today = new Date().getDay(); // 0=Sun, 1=Mon, ...
+    document.querySelectorAll<HTMLElement>('.deal-card').forEach(card => {
+      const days = card.dataset.days?.split(',').map(Number) ?? [];
+      if (days.includes(today)) card.classList.add('deal-today');
+    });
+  </script>
+
   <!-- ── Categories ── -->
   <section class="section">
     <div class="container">
@@ -159,52 +205,6 @@ const base = import.meta.env.BASE_URL;
       </div>
     </div>
   </section>
-
-  <!-- ── Daily Deals ── -->
-  <section class="section deals-section">
-    <div class="container">
-      <span class="section-label">Save Every Day</span>
-      <h2>Daily Deals</h2>
-      <div class="divider"></div>
-      <p class="deals-sub">A new deal every day of the week. Stop in and save.</p>
-      <div class="deals-grid">
-
-        <div class="glass-card deal-card" data-days="1,4">
-          <div class="deal-days">Mon &amp; Thu</div>
-          <div class="deal-discount">10% OFF</div>
-          <div class="deal-desc">All Edibles</div>
-        </div>
-
-        <div class="glass-card deal-card" data-days="2,5">
-          <div class="deal-days">Tue &amp; Fri</div>
-          <div class="deal-discount">10% OFF</div>
-          <div class="deal-desc">Flower Sale</div>
-        </div>
-
-        <div class="glass-card deal-card" data-days="3,6">
-          <div class="deal-days">Wed &amp; Sat</div>
-          <div class="deal-discount">BOGO</div>
-          <div class="deal-desc">Buy 1/8 of Wax, get 1g free — or 10% off</div>
-        </div>
-
-        <div class="glass-card deal-card" data-days="0">
-          <div class="deal-days">Sunday</div>
-          <div class="deal-discount">10% OFF</div>
-          <div class="deal-desc">All Kratom &amp; THCA Vapes</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <script>
-    // Highlight today's deal
-    const today = new Date().getDay(); // 0=Sun, 1=Mon, ...
-    document.querySelectorAll<HTMLElement>('.deal-card').forEach(card => {
-      const days = card.dataset.days?.split(',').map(Number) ?? [];
-      if (days.includes(today)) card.classList.add('deal-today');
-    });
-  </script>
 
   <!-- ── CTA ── -->
   <section class="cta-section">
