@@ -46,24 +46,28 @@ const base = import.meta.env.BASE_URL;
       <div class="deals-grid">
 
         <div class="glass-card deal-card" data-days="1,4">
+          <span class="today-badge">Today's Deal</span>
           <div class="deal-days">Mon &amp; Thu</div>
           <div class="deal-discount">10% OFF</div>
           <div class="deal-desc">All Edibles</div>
         </div>
 
         <div class="glass-card deal-card" data-days="2,5">
+          <span class="today-badge">Today's Deal</span>
           <div class="deal-days">Tue &amp; Fri</div>
           <div class="deal-discount">10% OFF</div>
           <div class="deal-desc">Flower Sale</div>
         </div>
 
         <div class="glass-card deal-card" data-days="3,6">
+          <span class="today-badge">Today's Deal</span>
           <div class="deal-days">Wed &amp; Sat</div>
           <div class="deal-discount">BOGO</div>
           <div class="deal-desc">Buy 1/8 of Wax, get 1g free — or 10% off</div>
         </div>
 
         <div class="glass-card deal-card" data-days="0">
+          <span class="today-badge">Today's Deal</span>
           <div class="deal-days">Sunday</div>
           <div class="deal-discount">10% OFF</div>
           <div class="deal-desc">All Kratom &amp; THCA Vapes</div>
@@ -438,7 +442,6 @@ const base = import.meta.env.BASE_URL;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.25rem;
-    padding-top: 1.25rem;
   }
 
   .deal-card {
@@ -480,31 +483,29 @@ const base = import.meta.env.BASE_URL;
     line-height: 1.4;
   }
 
-  .deal-today {
-    border-color: var(--accent) !important;
-    box-shadow: 0 0 0 1px var(--accent), 0 0 24px rgba(56,189,248,0.2);
-    position: relative;
-    overflow: visible;
-  }
-
-  .deal-today::before {
-    content: "Today's Deal";
-    position: absolute;
-    top: -1.35rem;
-    left: 50%;
-    transform: translateX(-50%);
+  .today-badge {
+    display: none;
     font-family: 'Rubik', sans-serif;
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--accent);
-    background: var(--bg-1);
+    background: rgba(56,189,248,0.1);
     border: 1px solid var(--accent);
-    padding: 0.2rem 0.75rem;
+    padding: 0.25rem 0.85rem;
     border-radius: 100px;
     white-space: nowrap;
-    z-index: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .deal-today {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 1px var(--accent), 0 0 24px rgba(56,189,248,0.2);
+  }
+
+  .deal-today .today-badge {
+    display: inline-block;
   }
 
   @media (max-width: 900px) {
