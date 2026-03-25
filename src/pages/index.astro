@@ -608,8 +608,21 @@ const base = import.meta.env.BASE_URL;
 
   /* ── Responsive ── */
   @media (max-width: 960px) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .hero-astronaut { display: none; }
+    .hero-grid {
+      grid-template-columns: 1fr;
+      min-height: unset;
+      padding-top: 6rem;
+      padding-bottom: 3rem;
+      text-align: center;
+    }
+    .hero-astronaut {
+      order: -1;
+    }
+    .hero-astronaut img {
+      width: 240px;
+      height: 240px;
+    }
+    .hero-actions { justify-content: center; }
     .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .categories-grid { grid-template-columns: 1fr; }
     .locations-grid { grid-template-columns: 1fr; }
