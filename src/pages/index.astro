@@ -9,10 +9,9 @@ const base = import.meta.env.BASE_URL;
   <section class="hero">
     <div class="hero-orb orb-1" aria-hidden="true"></div>
     <div class="hero-orb orb-2" aria-hidden="true"></div>
+    <div class="hero-stars" id="heroStars" aria-hidden="true"></div>
 
     <div class="container hero-grid">
-
-      <div class="hero-stars" id="heroStars" aria-hidden="true"></div>
       <div class="hero-text" style="max-width:680px;margin-inline:auto">
         <div class="hero-eyebrow">
           <span class="orbit-dot" aria-hidden="true"></span>
@@ -21,7 +20,7 @@ const base = import.meta.env.BASE_URL;
         <h1>Welcome to<br /><span class="hero-brand">ICT Exoticz</span></h1>
         <p class="hero-sub">Curated hemp-derived cannabinoids and exotic lifestyle products — making luxury accessible to everyone in the ICT.</p>
         <div class="hero-actions">
-          <a href={`${base}products`} class="btn btn-primary">Shop Products</a>
+          <a href={`${base}products`} class="btn btn-primary">Browse Products</a>
           <a href={`${base}contact`} class="btn btn-outline">Find a Location</a>
         </div>
         <p class="hero-notice">
@@ -81,15 +80,15 @@ const base = import.meta.env.BASE_URL;
       for (let i = 0; i < 60; i++) {
         const s = document.createElement('span');
         s.className = 'hero-star';
-        const size = Math.random() * 2.5 + 0.8;
+        const size = Math.random() * 3 + 1;
         s.style.cssText = `
           left:${Math.random()*100}%;
           top:${Math.random()*100}%;
           width:${size}px; height:${size}px;
           --d:${(Math.random()*3+2).toFixed(1)}s;
           --delay:-${(Math.random()*5).toFixed(1)}s;
-          --min-op:${(Math.random()*0.1).toFixed(2)};
-          --max-op:${(Math.random()*0.5+0.4).toFixed(2)};
+          --min-op:${(Math.random()*0.2+0.1).toFixed(2)};
+          --max-op:${(Math.random()*0.3+0.7).toFixed(2)};
         `;
         heroStars.appendChild(s);
       }

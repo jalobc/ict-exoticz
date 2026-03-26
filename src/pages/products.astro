@@ -25,9 +25,13 @@ const lifestyleProducts = [
 
   <div class="page-header">
     <div class="container">
-      <span class="section-label">What We Offer</span>
+      <span class="section-label">Product Catalog</span>
       <h1>Our Products</h1>
-      <p>Quality hemp-derived cannabinoids, accessories, and exotic lifestyle goods — all under one roof.</p>
+      <p>Browse what we carry — then stop by any location to see the full selection and shop in person.</p>
+      <div class="instore-notice">
+        <span class="instore-icon">🏪</span>
+        <span>All products are available <strong>in-store only</strong> — no online ordering at this time.</span>
+      </div>
     </div>
   </div>
 
@@ -148,7 +152,7 @@ const lifestyleProducts = [
     text-transform: uppercase;
     color: var(--accent);
     background: var(--accent-dim);
-    border: 1px solid rgba(56,189,248,0.3);
+    border: 1px solid rgba(6,182,212,0.3);
     padding: 0.2rem 0.55rem;
     border-radius: 100px;
     margin-bottom: 0.85rem;
@@ -172,6 +176,20 @@ const lifestyleProducts = [
   }
   .visit-inner > div { max-width: 520px; }
   .visit-inner h2 { margin-bottom: 0.5rem; }
+
+  .instore-notice {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    background: rgba(6,182,212,0.08);
+    border: 1px solid rgba(6,182,212,0.25);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    color: var(--text-2);
+  }
+  .instore-icon { font-size: 1rem; }
 
   .disclaimer-bar {
     padding-block: 1.5rem;
