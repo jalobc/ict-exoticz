@@ -16,10 +16,11 @@ import Layout from '../layouts/Layout.astro';
     <div class="container">
       <div class="contact-grid">
 
-        <div class="glass-card contact-card">
+        <div class="glass-card contact-card" data-hours='{"0":[12,20],"1":null,"2":[12,20],"3":[12,20],"4":[12,20],"5":[12,20],"6":[12,20]}'>
           <div class="card-top">
             <h2>ICT Exoticz</h2>
             <span class="loc-badge">Central Ave</span>
+            <span class="open-badge"></span>
           </div>
           <div class="contact-detail">
             <h4>Address</h4>
@@ -46,10 +47,11 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </div>
 
-        <div class="glass-card contact-card">
+        <div class="glass-card contact-card" data-hours='{"0":[12,22],"1":[10,22],"2":[10,22],"3":[10,22],"4":[10,22],"5":[10,22],"6":[10,22]}'>
           <div class="card-top">
             <h2>ICT Exoticz 2</h2>
             <span class="loc-badge">Seneca</span>
+            <span class="open-badge"></span>
           </div>
           <div class="contact-detail">
             <h4>Address</h4>
@@ -87,10 +89,11 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </div>
 
-        <div class="glass-card contact-card">
+        <div class="glass-card contact-card" data-hours='{"0":[12,22],"1":[12,22],"2":[12,22],"3":[12,22],"4":[12,22],"5":[12,22],"6":[12,22]}'>
           <div class="card-top">
             <h2>ICT Exoticz 3</h2>
             <span class="loc-badge">Sweetbriar</span>
+            <span class="open-badge"></span>
           </div>
           <div class="contact-detail">
             <h4>Address</h4>
@@ -135,6 +138,25 @@ import Layout from '../layouts/Layout.astro';
 
 </Layout>
 
+<script>
+  const now = new Date();
+  const day = now.getDay();
+  const hour = now.getHours() + now.getMinutes() / 60;
+  document.querySelectorAll<HTMLElement>('.contact-card[data-hours]').forEach(card => {
+    const hours = JSON.parse(card.dataset.hours!);
+    const range: [number, number] | null = hours[String(day)];
+    const badge = card.querySelector<HTMLElement>('.open-badge');
+    if (!badge) return;
+    if (range && hour >= range[0] && hour < range[1]) {
+      badge.textContent = 'Open Now';
+      badge.classList.add('is-open');
+    } else {
+      badge.textContent = 'Closed';
+      badge.classList.add('is-closed');
+    }
+  });
+</script>
+
 <style>
   .section { padding-block: 4rem 5rem; }
 
@@ -143,6 +165,16 @@ import Layout from '../layouts/Layout.astro';
   .contact-card { padding: 2.25rem; display: flex; flex-direction: column; gap: 1.5rem; }
 
   .card-top { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+
+  .open-badge {
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.18rem 0.55rem; border-radius: 100px;
+    margin-left: auto;
+  }
+  .open-badge.is-open { color: #34D399; background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.4); }
+  .open-badge.is-closed { color: var(--text-3); background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); }
 
   .loc-badge {
     font-family: 'Rubik', sans-serif;

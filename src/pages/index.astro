@@ -33,7 +33,7 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- ── Daily Deals ── -->
-  <section class="section deals-section">
+  <section class="section deals-section fade-in">
     <div class="container">
       <span class="section-label">Save Every Day</span>
       <h2>Daily Deals</h2>
@@ -75,15 +75,34 @@ const base = import.meta.env.BASE_URL;
 
   <script>
     // Highlight today's deal
-    const today = new Date().getDay(); // 0=Sun, 1=Mon, ...
+    const today = new Date().getDay();
     document.querySelectorAll<HTMLElement>('.deal-card').forEach(card => {
       const days = card.dataset.days?.split(',').map(Number) ?? [];
       if (days.includes(today)) card.classList.add('deal-today');
     });
+
+    // Open Now indicators
+    const now = new Date();
+    const day = now.getDay();
+    const hour = now.getHours() + now.getMinutes() / 60;
+
+    document.querySelectorAll<HTMLElement>('.location-card[data-hours]').forEach(card => {
+      const hours = JSON.parse(card.dataset.hours!);
+      const range: [number, number] | null = hours[String(day)];
+      const badge = card.querySelector<HTMLElement>('.open-badge');
+      if (!badge) return;
+      if (range && hour >= range[0] && hour < range[1]) {
+        badge.textContent = 'Open Now';
+        badge.classList.add('is-open');
+      } else {
+        badge.textContent = 'Closed';
+        badge.classList.add('is-closed');
+      }
+    });
   </script>
 
   <!-- ── Categories ── -->
-  <section class="section">
+  <section class="section fade-in">
     <div class="container">
       <span class="section-label">What We Carry</span>
       <h2>Exotic Products for Every Lifestyle</h2>
@@ -113,7 +132,7 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- ── About ── -->
-  <section class="section about-section">
+  <section class="section about-section fade-in">
     <div class="container about-inner">
       <div class="about-text">
         <span class="section-label">About Us</span>
@@ -121,7 +140,7 @@ const base = import.meta.env.BASE_URL;
         <div class="divider"></div>
         <p>ICT Exoticz is Wichita's go-to destination for unique products. We carry a curated selection of exotic items designed to elevate your lifestyle — from premium hemp-derived cannabinoid products to unique lifestyle goods.</p>
         <p style="margin-top:1rem">With three convenient locations in Wichita, KS, we're here to serve you with knowledgeable staff and a welcoming atmosphere. We believe in making quality products accessible to everyone in the ICT community.</p>
-        <a href={`${base}locations`} class="btn btn-outline" style="margin-top:1.75rem">Our Locations</a>
+        <a href={`${base}contact`} class="btn btn-outline" style="margin-top:1.75rem">Our Locations</a>
       </div>
       <div class="about-stats">
         <div class="glass-card stat-card">
@@ -145,17 +164,18 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- ── Locations Preview ── -->
-  <section class="section">
+  <section class="section fade-in">
     <div class="container">
       <span class="section-label">Find Us</span>
       <h2>Three Wichita Locations</h2>
       <div class="divider"></div>
       <div class="locations-grid">
 
-        <div class="glass-card location-card">
+        <div class="glass-card location-card" data-hours='{"0":[12,20],"1":null,"2":[12,20],"3":[12,20],"4":[12,20],"5":[12,20],"6":[12,20]}'>
           <div class="loc-header">
             <h3>ICT Exoticz</h3>
             <span class="loc-badge">Central Ave</span>
+            <span class="open-badge"></span>
           </div>
           <address>2001 E Central Ave<br />Wichita, KS 67214</address>
           <a href="tel:+13164945534" class="loc-phone">(316) 494-5534</a>
@@ -169,10 +189,11 @@ const base = import.meta.env.BASE_URL;
           <a href="https://www.google.com/maps/search/?api=1&query=2001+E+Central+Ave,+Wichita,+KS+67214" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;justify-content:center">Get Directions</a>
         </div>
 
-        <div class="glass-card location-card">
+        <div class="glass-card location-card" data-hours='{"0":[12,22],"1":[10,22],"2":[10,22],"3":[10,22],"4":[10,22],"5":[10,22],"6":[10,22]}'>
           <div class="loc-header">
             <h3>ICT Exoticz 2</h3>
             <span class="loc-badge">Seneca</span>
+            <span class="open-badge"></span>
           </div>
           <address>3125 S Seneca St<br />Wichita, KS 67217</address>
           <a href="tel:+13163122515" class="loc-phone">(316) 312-2515</a>
@@ -186,10 +207,11 @@ const base = import.meta.env.BASE_URL;
           <a href="https://www.google.com/maps/search/?api=1&query=3125+S+Seneca+St,+Wichita,+KS+67217" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;justify-content:center">Get Directions</a>
         </div>
 
-        <div class="glass-card location-card">
+        <div class="glass-card location-card" data-hours='{"0":[12,22],"1":[12,22],"2":[12,22],"3":[12,22],"4":[12,22],"5":[12,22],"6":[12,22]}'>
           <div class="loc-header">
             <h3>ICT Exoticz 3</h3>
             <span class="loc-badge">Sweetbriar</span>
+            <span class="open-badge"></span>
           </div>
           <address>2020 W 21st St<br />Wichita, KS 67203</address>
           <a href="tel:+13162459639" class="loc-phone">(316) 245-9639</a>
@@ -233,7 +255,7 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- ── Google Reviews ── -->
-  <section class="section review-section">
+  <section class="section review-section fade-in">
     <div class="container">
       <span class="section-label">Share Your Experience</span>
       <h2>Leave Us a Google Review</h2>
@@ -281,7 +303,7 @@ const base = import.meta.env.BASE_URL;
       <div class="glass-card cta-card">
         <div class="cta-orb" aria-hidden="true"></div>
         <h2>Come See Us In-Store</h2>
-        <p>Our inventory is always evolving. Visit one of our two Wichita locations to explore the full selection and get personalized recommendations from our team.</p>
+        <p>Our inventory is always evolving. Visit any of our three Wichita locations to explore the full selection and get personalized recommendations from our team.</p>
         <a href={`${base}contact`} class="btn btn-primary">Contact Us</a>
       </div>
     </div>
@@ -590,6 +612,27 @@ const base = import.meta.env.BASE_URL;
     justify-content: space-between;
     gap: 0.75rem;
     flex-wrap: wrap;
+  }
+
+  .open-badge {
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.18rem 0.55rem;
+    border-radius: 100px;
+    margin-left: auto;
+  }
+  .open-badge.is-open {
+    color: #34D399;
+    background: rgba(52, 211, 153, 0.12);
+    border: 1px solid rgba(52, 211, 153, 0.4);
+  }
+  .open-badge.is-closed {
+    color: var(--text-3);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--glass-border);
   }
 
   .loc-badge {

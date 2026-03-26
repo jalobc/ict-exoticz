@@ -23,6 +23,50 @@ const { title, description = 'ICT Exoticz – Your go-to shop for hemp-derived c
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>{title} | ICT Exoticz</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={`${title} | ICT Exoticz`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/ict-exoticz/astronaut-3d.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- LocalBusiness Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "ICT Exoticz",
+      "description": "Wichita's go-to shop for hemp-derived cannabinoids, exotic lifestyle products, nicotine vapes, glass, and accessories.",
+      "url": "https://jalobc.github.io/ict-exoticz/",
+      "logo": "https://jalobc.github.io/ict-exoticz/astronaut-3d.png",
+      "sameAs": [
+        "https://www.facebook.com/p/ICT-Exoticz-61554037832230/",
+        "https://www.instagram.com/ictexoticz/"
+      ],
+      "location": [
+        {
+          "@type": "LocalBusiness",
+          "name": "ICT Exoticz",
+          "address": { "@type": "PostalAddress", "streetAddress": "2001 E Central Ave", "addressLocality": "Wichita", "addressRegion": "KS", "postalCode": "67214" },
+          "telephone": "+13164945534",
+          "openingHours": ["Tu-Su 12:00-20:00"]
+        },
+        {
+          "@type": "LocalBusiness",
+          "name": "ICT Exoticz 2",
+          "address": { "@type": "PostalAddress", "streetAddress": "3125 S Seneca St", "addressLocality": "Wichita", "addressRegion": "KS", "postalCode": "67217" },
+          "telephone": "+13163122515",
+          "openingHours": ["Mo-Sa 10:00-22:00", "Su 12:00-22:00"]
+        },
+        {
+          "@type": "LocalBusiness",
+          "name": "ICT Exoticz 3",
+          "address": { "@type": "PostalAddress", "streetAddress": "2020 W 21st St", "addressLocality": "Wichita", "addressRegion": "KS", "postalCode": "67203" },
+          "telephone": "+13162459639",
+          "openingHours": ["Mo-Su 12:00-22:00"]
+        }
+      ]
+    })} />
   </head>
   <body>
     <AgeGate />
@@ -94,6 +138,17 @@ const { title, description = 'ICT Exoticz – Your go-to shop for hemp-derived c
   initStars();
   draw();
   window.addEventListener('resize', () => { resize(); initStars(); });
+
+  // ── Scroll animations ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
 <style is:global>
@@ -353,8 +408,22 @@ const { title, description = 'ICT Exoticz – Your go-to shop for hemp-derived c
   /* ── Scrollbar ── */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: rgba(56,189,248,0.3); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb { background: rgba(6,182,212,0.3); border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+  /* ── Scroll animations ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-in-delay-1 { transition-delay: 0.1s; }
+  .fade-in-delay-2 { transition-delay: 0.2s; }
+  .fade-in-delay-3 { transition-delay: 0.3s; }
 
   /* ── Focus ── */
   :focus-visible {
