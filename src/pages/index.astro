@@ -12,6 +12,7 @@ const base = import.meta.env.BASE_URL;
 
     <div class="container hero-grid">
 
+      <div class="hero-glow-ring" aria-hidden="true"></div>
       <div class="hero-text" style="max-width:680px;margin-inline:auto">
         <div class="hero-eyebrow">
           <span class="orbit-dot" aria-hidden="true"></span>
@@ -254,6 +255,88 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
+  <!-- ── Testimonials ── -->
+  <section class="section fade-in">
+    <div class="container">
+      <span class="section-label">Customer Love</span>
+      <h2>What People Are Saying</h2>
+      <div class="divider"></div>
+      <div class="testimonials-grid">
+
+        <div class="glass-card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Best selection of hemp products in Wichita. Staff is super knowledgeable and always helpful. This is my go-to spot!"</p>
+          <div class="testimonial-author">
+            <span class="author-name">— Wichita Customer</span>
+            <span class="author-source">Google Review</span>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Amazing vibes and great prices. They always have new products coming in. Highly recommend checking them out!"</p>
+          <div class="testimonial-author">
+            <span class="author-name">— Local Shopper</span>
+            <span class="author-source">Google Review</span>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Love the daily deals! The Wednesday wax BOGO is unbeatable. Three locations makes it so convenient too."</p>
+          <div class="testimonial-author">
+            <span class="author-name">— Regular Customer</span>
+            <span class="author-source">Google Review</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="section fade-in">
+    <div class="container faq-container">
+      <span class="section-label">Got Questions?</span>
+      <h2>Frequently Asked Questions</h2>
+      <div class="divider"></div>
+
+      <div class="faq-list">
+
+        <details class="glass-card faq-item">
+          <summary class="faq-question">What ID do I need to purchase cannabinoid products?</summary>
+          <div class="faq-answer">You must be 21 or older to purchase hemp-derived cannabinoid products. We accept any valid government-issued photo ID such as a driver's license, state ID, or passport. No exceptions.</div>
+        </details>
+
+        <details class="glass-card faq-item">
+          <summary class="faq-question">Are your products legal?</summary>
+          <div class="faq-answer">Yes. All of our hemp-derived cannabinoid products comply with the 2018 Farm Bill and contain less than 0.3% Delta-9 THC by dry weight. Products are third-party lab tested for purity and potency.</div>
+        </details>
+
+        <details class="glass-card faq-item">
+          <summary class="faq-question">What is the difference between THCA and Delta-9?</summary>
+          <div class="faq-answer">THCA is the raw, non-psychoactive form of THC found in hemp. When heated (smoked or vaped), THCA converts to THC. Delta-9 is the traditional psychoactive compound. Both are available in our hemp-derived product line. Our staff can walk you through the differences in more detail in store.</div>
+        </details>
+
+        <details class="glass-card faq-item">
+          <summary class="faq-question">Do you offer any deals or discounts?</summary>
+          <div class="faq-answer">Yes! We run daily deals every day of the week — 10% off edibles on Mondays & Thursdays, flower sales on Tuesdays & Fridays, BOGO wax on Wednesdays & Saturdays, and 10% off Kratom & THCA Vapes on Sundays. Check the Daily Deals section on our homepage for today's deal.</div>
+        </details>
+
+        <details class="glass-card faq-item">
+          <summary class="faq-question">Can I order online or do I need to visit in store?</summary>
+          <div class="faq-answer">We are currently in-store only. Visit any of our three Wichita locations to browse the full selection. Our staff are happy to answer questions and help you find exactly what you're looking for.</div>
+        </details>
+
+        <details class="glass-card faq-item">
+          <summary class="faq-question">How many locations do you have?</summary>
+          <div class="faq-answer">We have three locations in Wichita, KS — ICT Exoticz on E Central Ave, ICT Exoticz 2 on S Seneca St, and ICT Exoticz 3 on W 21st St. Visit the Contact page for addresses, hours, and directions.</div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ── Google Reviews ── -->
   <section class="section review-section fade-in">
     <div class="container">
@@ -353,6 +436,22 @@ const base = import.meta.env.BASE_URL;
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-18px); }
+  }
+
+  .hero-glow-ring {
+    position: absolute;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    border: 1px solid rgba(6, 182, 212, 0.15);
+    box-shadow: 0 0 80px rgba(6, 182, 212, 0.08), inset 0 0 80px rgba(6, 182, 212, 0.04);
+    animation: ring-pulse 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes ring-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.06); opacity: 1; }
   }
 
   .hero-text {
@@ -763,6 +862,114 @@ const base = import.meta.env.BASE_URL;
     .section { padding-block: 3.5rem; }
     .hero { min-height: 85vh; }
     .about-stats { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ── Testimonials ── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .testimonial-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stars {
+    font-size: 1rem;
+    color: #FBBF24;
+    letter-spacing: 2px;
+  }
+
+  .testimonial-text {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text-2);
+    flex: 1;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    border-top: 1px solid var(--glass-border);
+    padding-top: 0.75rem;
+  }
+
+  .author-name {
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-1);
+  }
+
+  .author-source {
+    font-size: 0.72rem;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── FAQ ── */
+  .faq-container { max-width: 780px; }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .faq-item {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.97rem;
+    font-weight: 600;
+    color: var(--text-1);
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: color 0.15s;
+  }
+
+  .faq-question::-webkit-details-marker { display: none; }
+
+  .faq-question::after {
+    content: '+';
+    font-size: 1.2rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  details[open] .faq-question::after { transform: rotate(45deg); }
+  details[open] .faq-question { color: var(--accent); }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    font-size: 0.9rem;
+    color: var(--text-2);
+    line-height: 1.75;
+    border-top: 1px solid var(--glass-border);
+    margin: 0 1.5rem;
+    padding-top: 1rem;
   }
 
   /* ── Google Reviews ── */

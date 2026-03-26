@@ -81,11 +81,22 @@ const { title, description = 'ICT Exoticz – Your go-to shop for hemp-derived c
       <div class="nebula n4"></div>
     </div>
 
+    <!-- Announcement Banner -->
+    <div id="announce-bar" class="announce-bar" role="banner" aria-label="Announcement">
+      <span class="announce-text">🚀 New arrivals in store — stop by and check out what's new!</span>
+      <button id="announce-close" class="announce-close" aria-label="Dismiss announcement">✕</button>
+    </div>
+
     <Header />
     <main>
       <slot />
     </main>
     <Footer />
+
+    <!-- Back to Top -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
   </body>
 </html>
 
@@ -138,6 +149,27 @@ const { title, description = 'ICT Exoticz – Your go-to shop for hemp-derived c
   initStars();
   draw();
   window.addEventListener('resize', () => { resize(); initStars(); });
+
+  // ── Announcement banner ──
+  const announceBar = document.getElementById('announce-bar');
+  const announceClose = document.getElementById('announce-close');
+  if (sessionStorage.getItem('announce_dismissed') === '1') {
+    announceBar?.remove();
+    document.documentElement.style.setProperty('--banner-h', '0px');
+  }
+  announceClose?.addEventListener('click', () => {
+    sessionStorage.setItem('announce_dismissed', '1');
+    announceBar?.classList.add('announce-exit');
+    document.documentElement.style.setProperty('--banner-h', '0px');
+    setTimeout(() => announceBar?.remove(), 300);
+  });
+
+  // ── Back to top ──
+  const btt = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    btt?.classList.toggle('btt-visible', window.scrollY > 400);
+  }, { passive: true });
+  btt?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   // ── Scroll animations ──
   const observer = new IntersectionObserver((entries) => {
@@ -192,6 +224,7 @@ const { title, description = 'ICT Exoticz – Your go-to shop for hemp-derived c
 
     --max-w:        1200px;
     --nav-h:        68px;
+    --banner-h:     38px;
   }
 
   /* ── Reset ── */
@@ -212,7 +245,7 @@ const { title, description = 'ICT Exoticz – Your go-to shop for hemp-derived c
     overflow-x: hidden;
   }
 
-  main { flex: 1; padding-top: var(--nav-h); }
+  main { flex: 1; padding-top: calc(var(--nav-h) + var(--banner-h)); }
 
   /* ── Starfield ── */
   #starfield {
@@ -443,5 +476,72 @@ const { title, description = 'ICT Exoticz – Your go-to shop for hemp-derived c
 
   @media (max-width: 768px) {
     .page-header { padding: 3rem 1.5rem 2rem; }
+  }
+
+  /* ── Announcement Banner ── */
+  .announce-bar {
+    position: relative;
+    z-index: 101;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.6rem 1.5rem;
+    background: linear-gradient(90deg, rgba(6,182,212,0.15), rgba(6,182,212,0.08), rgba(6,182,212,0.15));
+    border-bottom: 1px solid rgba(6,182,212,0.25);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .announce-text {
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-1);
+    text-align: center;
+  }
+  .announce-close {
+    background: none;
+    border: none;
+    color: var(--text-3);
+    cursor: pointer;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: color 0.15s;
+    position: absolute;
+    right: 1rem;
+  }
+  .announce-close:hover { color: var(--text-1); }
+  .announce-exit { opacity: 0; transform: translateY(-100%); }
+
+  /* ── Back to Top ── */
+  .back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 99;
+    width: 44px; height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--glass-bg-2);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    color: var(--accent);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.15s, box-shadow 0.15s;
+  }
+  .back-to-top.btt-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .back-to-top:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 16px var(--accent-dim);
   }
 </style>
