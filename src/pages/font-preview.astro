@@ -1,0 +1,225 @@
+---
+// Temporary font preview page - delete after choosing
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Font Preview | ICT Exoticz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&family=Exo+2:wght@400;500&family=Space+Grotesk:wght@700;800&family=DM+Sans:wght@400;500&family=Syne:wght@700;800&family=Inter:wght@400;500&family=Outfit:wght@700;800&family=Nunito+Sans:wght@400;500&family=Rajdhani:wght@700&family=Barlow:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #050509;
+    color: #EEF2FF;
+    padding: 2rem;
+    min-height: 100vh;
+  }
+
+  h1.page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    color: #06B6D4;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .option-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #06B6D4;
+    border: 1px solid rgba(6,182,212,0.35);
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    border-radius: 100px;
+    width: fit-content;
+    margin-bottom: 0.25rem;
+  }
+
+  .font-names {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    color: #4A5580;
+    margin-bottom: 0.5rem;
+  }
+
+  .divider {
+    width: 36px;
+    height: 3px;
+    background: linear-gradient(90deg, #06B6D4, transparent);
+    border-radius: 2px;
+    margin: 0.25rem 0;
+  }
+
+  .preview-sub {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #06B6D4;
+    margin-bottom: 0.25rem;
+  }
+
+  .preview-body {
+    line-height: 1.7;
+    color: #8892B0;
+    font-size: 0.92rem;
+  }
+
+  .preview-btn {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    background: linear-gradient(135deg, #06B6D4, #0891B2);
+    color: #020617;
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    width: fit-content;
+  }
+
+  /* ── Option A: Orbitron + Exo 2 ── */
+  .a .heading { font-family: 'Orbitron', sans-serif; font-size: 2rem; font-weight: 800; line-height: 1.1; }
+  .a .preview-sub { font-family: 'Orbitron', sans-serif; }
+  .a .preview-body { font-family: 'Exo 2', sans-serif; }
+  .a .preview-btn { font-family: 'Orbitron', sans-serif; font-size: 0.72rem; }
+
+  /* ── Option B: Space Grotesk + DM Sans ── */
+  .b .heading { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 800; line-height: 1.05; }
+  .b .preview-sub { font-family: 'Space Grotesk', sans-serif; }
+  .b .preview-body { font-family: 'DM Sans', sans-serif; }
+  .b .preview-btn { font-family: 'Space Grotesk', sans-serif; }
+
+  /* ── Option C: Syne + Inter ── */
+  .c .heading { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; line-height: 1.05; }
+  .c .preview-sub { font-family: 'Syne', sans-serif; }
+  .c .preview-body { font-family: 'Inter', sans-serif; }
+  .c .preview-btn { font-family: 'Syne', sans-serif; }
+
+  /* ── Option D: Outfit + Nunito Sans ── */
+  .d .heading { font-family: 'Outfit', sans-serif; font-size: 2.3rem; font-weight: 800; line-height: 1.05; }
+  .d .preview-sub { font-family: 'Outfit', sans-serif; }
+  .d .preview-body { font-family: 'Nunito Sans', sans-serif; }
+  .d .preview-btn { font-family: 'Outfit', sans-serif; }
+
+  /* ── Option E: Rajdhani + Barlow ── */
+  .e .heading { font-family: 'Rajdhani', sans-serif; font-size: 2.6rem; font-weight: 700; line-height: 1.0; letter-spacing: 0.02em; }
+  .e .preview-sub { font-family: 'Rajdhani', sans-serif; }
+  .e .preview-body { font-family: 'Barlow', sans-serif; }
+  .e .preview-btn { font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; }
+
+  /* ── Current: Rubik + Nunito Sans ── */
+  .current .heading { font-family: 'Rubik', sans-serif; font-size: 2.2rem; font-weight: 800; line-height: 1.05; }
+  .current .preview-sub { font-family: 'Rubik', sans-serif; }
+  .current .preview-body { font-family: 'Nunito Sans', sans-serif; }
+  .current .preview-btn { font-family: 'Rubik', sans-serif; }
+
+  /* include Rubik from current site */
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+<h1 class="page-title">Font Preview — ICT Exoticz</h1>
+
+<div class="grid">
+
+  <!-- Current -->
+  <div class="card current">
+    <div class="option-label">Current</div>
+    <div class="font-names">Rubik + Nunito Sans</div>
+    <div class="preview-sub">Wichita, Kansas · Est. 2024</div>
+    <div class="heading">Welcome to<br /><span style="color:#06B6D4">ICT Exoticz</span></div>
+    <div class="divider"></div>
+    <div class="preview-body">Curated hemp-derived cannabinoids and exotic lifestyle products — making luxury accessible to everyone in the ICT.</div>
+    <div class="preview-btn">Shop Products</div>
+  </div>
+
+  <!-- Option A -->
+  <div class="card a">
+    <div class="option-label">Option A — Futuristic</div>
+    <div class="font-names">Orbitron + Exo 2</div>
+    <div class="preview-sub">Wichita, Kansas · Est. 2024</div>
+    <div class="heading">Welcome to<br /><span style="color:#06B6D4">ICT Exoticz</span></div>
+    <div class="divider"></div>
+    <div class="preview-body">Curated hemp-derived cannabinoids and exotic lifestyle products — making luxury accessible to everyone in the ICT.</div>
+    <div class="preview-btn">Shop Products</div>
+  </div>
+
+  <!-- Option B -->
+  <div class="card b">
+    <div class="option-label">Option B — Recommended ⭐</div>
+    <div class="font-names">Space Grotesk + DM Sans</div>
+    <div class="preview-sub">Wichita, Kansas · Est. 2024</div>
+    <div class="heading">Welcome to<br /><span style="color:#06B6D4">ICT Exoticz</span></div>
+    <div class="divider"></div>
+    <div class="preview-body">Curated hemp-derived cannabinoids and exotic lifestyle products — making luxury accessible to everyone in the ICT.</div>
+    <div class="preview-btn">Shop Products</div>
+  </div>
+
+  <!-- Option C -->
+  <div class="card c">
+    <div class="option-label">Option C — Streetwear</div>
+    <div class="font-names">Syne + Inter</div>
+    <div class="preview-sub">Wichita, Kansas · Est. 2024</div>
+    <div class="heading">Welcome to<br /><span style="color:#06B6D4">ICT Exoticz</span></div>
+    <div class="divider"></div>
+    <div class="preview-body">Curated hemp-derived cannabinoids and exotic lifestyle products — making luxury accessible to everyone in the ICT.</div>
+    <div class="preview-btn">Shop Products</div>
+  </div>
+
+  <!-- Option D -->
+  <div class="card d">
+    <div class="option-label">Option D — Sleek</div>
+    <div class="font-names">Outfit + Nunito Sans</div>
+    <div class="preview-sub">Wichita, Kansas · Est. 2024</div>
+    <div class="heading">Welcome to<br /><span style="color:#06B6D4">ICT Exoticz</span></div>
+    <div class="divider"></div>
+    <div class="preview-body">Curated hemp-derived cannabinoids and exotic lifestyle products — making luxury accessible to everyone in the ICT.</div>
+    <div class="preview-btn">Shop Products</div>
+  </div>
+
+  <!-- Option E -->
+  <div class="card e">
+    <div class="option-label">Option E — Angular</div>
+    <div class="font-names">Rajdhani + Barlow</div>
+    <div class="preview-sub">Wichita, Kansas · Est. 2024</div>
+    <div class="heading">Welcome to<br /><span style="color:#06B6D4">ICT Exoticz</span></div>
+    <div class="divider"></div>
+    <div class="preview-body">Curated hemp-derived cannabinoids and exotic lifestyle products — making luxury accessible to everyone in the ICT.</div>
+    <div class="preview-btn">Shop Products</div>
+  </div>
+
+</div>
+
+</body>
+</html>
