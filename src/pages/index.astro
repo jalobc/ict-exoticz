@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <Layout title="Home" description="ICT Exoticz – Wichita's go-to shop for hemp-derived cannabinoids and exotic lifestyle products.">
