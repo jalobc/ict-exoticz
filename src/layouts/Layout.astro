@@ -31,12 +31,16 @@ const { title, description = 'ICT Exoticz – Your go-to shop for hemp-derived c
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>{title} | ICT Exoticz</title>
 
+    <link rel="canonical" href={`https://jalobc.github.io${Astro.url.pathname}`} />
+
     <!-- Open Graph -->
     <meta property="og:title" content={`${title} | ICT Exoticz`} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/ict-exoticz/astronaut-3d.png" />
+    <meta property="og:url" content={`https://jalobc.github.io${Astro.url.pathname}`} />
+    <meta property="og:image" content="https://jalobc.github.io/ict-exoticz/icon-512.png" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://jalobc.github.io/ict-exoticz/icon-512.png" />
 
     <!-- LocalBusiness Schema -->
     <script type="application/ld+json" set:html={JSON.stringify({
