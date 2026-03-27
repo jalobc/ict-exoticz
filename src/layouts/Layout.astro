@@ -224,7 +224,16 @@ const { title, description = 'ICT Exoticz – Your go-to shop for hemp-derived c
     overflow-x: hidden;
   }
 
-  main { flex: 1; padding-top: var(--nav-h); }
+  @keyframes page-enter {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  main {
+    flex: 1;
+    padding-top: var(--nav-h);
+    animation: page-enter 0.35s ease;
+  }
 
   /* ── Starfield ── */
   #starfield {

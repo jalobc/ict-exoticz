@@ -6,6 +6,13 @@ const navLinks = [
 ];
 
 const base = import.meta.env.BASE_URL;
+const baseNorm = base.replace(/\/$/, '');
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string) {
+  if (href === '/') return currentPath === base || currentPath === baseNorm || currentPath === baseNorm + '/';
+  return currentPath === baseNorm + href || currentPath.startsWith(baseNorm + href + '/');
+}
 ---
 
 <header>
@@ -33,7 +40,11 @@ const base = import.meta.env.BASE_URL;
     <ul id="navMenu" role="list">
       {navLinks.map(link => (
         <li>
-          <a href={`${base}${link.href === '/' ? '' : link.href}`}>{link.label}</a>
+          <a
+            href={`${base}${link.href === '/' ? '' : link.href}`}
+            class:list={[{ active: isActive(link.href) }]}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+          >{link.label}</a>
         </li>
       ))}
     </ul>
@@ -117,6 +128,13 @@ const base = import.meta.env.BASE_URL;
   ul a:hover {
     color: var(--text-1);
     background: var(--glass-bg-2);
+  }
+  ul a.active {
+    color: var(--accent);
+    background: var(--accent-dim);
+  }
+  ul a.active:hover {
+    color: var(--accent-hover);
   }
 
   .social-links {
