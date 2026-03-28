@@ -3,13 +3,13 @@ import Layout from '../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 const cannabinoidProducts = [
-  { name: 'THCA Vapes', description: 'High-potency THCA vape cartridges in a wide range of strains. Smooth hits with lab-tested purity.', tag: 'Popular', icon: '💨' },
-  { name: 'HHC Vape Cartridges', description: 'Premium HHC vape cartridges in a variety of strains and flavors. Consistent and clean.', tag: null, icon: '🌿' },
-  { name: 'Delta-9 Gummies', description: 'Delicious hemp-derived Delta-9 THC gummies. Precisely dosed and made with quality ingredients.', tag: 'Fan Favorite', icon: '🍬' },
-  { name: 'Edibles', description: 'A rotating selection of hemp-derived edibles including gummies, chocolates, and more. Ask about Monday & Thursday deals.', tag: null, icon: '🍫' },
-  { name: 'Flower', description: 'Premium hemp flower in a variety of strains. Perfect for those who prefer the traditional experience.', tag: null, icon: '🌸' },
+  { name: 'Herbal Vape Carts', description: 'Vape cartridges in a wide range of strains. Smooth hits with lab-tested purity.', tag: 'Popular', icon: '💨' },
+  { name: 'Vape Cartridges', description: 'Vape cartridges in a variety of strains and flavors. Consistent and clean.', tag: null, icon: '🌿' },
+  { name: 'Herbal Gummies', description: 'Delicious herbal gummies made with quality ingredients. A customer favorite.', tag: 'Fan Favorite', icon: '🍬' },
+  { name: 'Edibles', description: 'A rotating selection of edibles including gummies, chocolates, and more. Ask about Monday & Thursday deals.', tag: null, icon: '🍫' },
+  { name: 'Flower', description: 'Premium flower in a variety of strains. Perfect for those who prefer the traditional experience.', tag: null, icon: '🌸' },
   { name: 'Wax & Concentrates', description: 'Top-shelf wax and concentrates for the experienced consumer. Ask about our Wednesday & Saturday BOGO deal.', tag: 'BOGO Deal', icon: '⚗️' },
-  { name: 'HHC Oil', description: 'High-quality HHC oil for versatile use. Easy to dose and great for those who prefer a different method.', tag: null, icon: '💧' },
+  { name: 'Herbal Oil', description: 'High-quality herbal oil for versatile use. Easy to dose and great for those who prefer a different method.', tag: null, icon: '💧' },
 ];
 
 const lifestyleProducts = [
@@ -20,7 +20,7 @@ const lifestyleProducts = [
 ];
 ---
 
-<Layout title="Products" description="Browse ICT Exoticz's selection of hemp-derived cannabinoids, accessories, and exotic lifestyle products in Wichita, KS.">
+<Layout title="Products" description="Browse ICT Exoticz's selection of herb, tobacco, accessories, and exotic lifestyle products in Wichita, KS.">
 
   <div class="page-header">
     <div class="container">
@@ -38,8 +38,8 @@ const lifestyleProducts = [
     <div class="container">
       <div class="cat-header">
         <div>
-          <span class="section-label">Lab-Tested · Hemp-Derived</span>
-          <h2>Hemp-Derived Cannabinoids</h2>
+          <span class="section-label">Lab-Tested · Responsibly Sourced</span>
+          <h2>Herbal Products</h2>
           <div class="divider"></div>
         </div>
         <span class="age-badge">21+ Only</span>
@@ -91,7 +91,7 @@ const lifestyleProducts = [
 
   <div class="disclaimer-bar">
     <div class="container">
-      <p>Hemp-derived products are sold in compliance with the 2018 Farm Bill. Products contain less than 0.3% Delta-9 THC on a dry weight basis. These statements have not been evaluated by the Food and Drug Administration. Not intended to diagnose, treat, cure, or prevent any disease. Must be 21+.</p>
+      <p>All products are sold in compliance with applicable state and federal law. These statements have not been evaluated by the Food and Drug Administration. Not intended to diagnose, treat, cure, or prevent any disease. Must be 21+.</p>
     </div>
   </div>
 
