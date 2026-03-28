@@ -28,7 +28,7 @@ const { title, description = 'ICT Exoticz – Your go-to shop for herb, tobacco,
     <meta name="apple-mobile-web-app-title" content="ICT Exoticz" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rubik:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>{title} | ICT Exoticz</title>
 
     <link rel="canonical" href={`https://ictexoticz.com${Astro.url.pathname}`} />
@@ -296,7 +296,10 @@ const { title, description = 'ICT Exoticz – Your go-to shop for herb, tobacco,
   header, main, footer { position: relative; z-index: 1; }
 
   /* ── Typography ── */
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3 {
+    font-family: 'Permanent Marker', cursive;
+  }
+  h4, h5, h6 {
     font-family: 'Rubik', sans-serif;
     font-weight: 700;
     line-height: 1.15;
