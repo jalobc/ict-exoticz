@@ -1,11 +1,11 @@
 ---
-const base = import.meta.env.BASE_URL.replace(/\/?$/, '');
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <div id="age-gate" class="age-gate" role="dialog" aria-modal="true" aria-labelledby="age-gate-title">
   <div class="age-gate-backdrop"></div>
   <div class="age-gate-modal glass-card">
-    <img src={`${base}/astronaut-3d.png`} alt="" class="age-gate-logo" width="220" height="220" />
+    <img src={`${base}astronaut-3d.png`} alt="" class="age-gate-logo" width="220" height="220" />
     <h2 id="age-gate-title">Welcome to ICT Exoticz</h2>
     <p>You must be 21 years of age or older to enter this site.</p>
     <p class="age-gate-sub">By entering, you confirm you are 21+ and agree to our terms.</p>
