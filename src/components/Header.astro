@@ -5,7 +5,7 @@ const navLinks = [
   { href: '/contact', label: 'Contact' },
 ];
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const baseNorm = base.replace(/\/$/, '');
 const currentPath = Astro.url.pathname;
 
@@ -18,7 +18,7 @@ function isActive(href: string) {
 <header>
   <nav class="container">
     <a href={base} class="logo" aria-label="ICT Exoticz home">
-      <img src={`${base}/astronaut-3d.png`} alt="" class="logo-img" aria-hidden="true" width="56" height="56" />
+      <img src={`${base}astronaut-3d.png`} alt="" class="logo-img" aria-hidden="true" width="56" height="56" />
       <span class="logo-ict">ICT</span><span class="logo-exoticz">Exoticz</span>
     </a>
 
