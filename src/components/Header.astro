@@ -41,7 +41,7 @@ function isActive(href: string) {
       {navLinks.map(link => (
         <li>
           <a
-            href={`${base}${link.href === '/' ? '' : link.href}`}
+            href={`${base}${link.href === '/' ? '' : link.href.slice(1)}`}
             class:list={[{ active: isActive(link.href) }]}
             aria-current={isActive(link.href) ? 'page' : undefined}
           >{link.label}</a>
