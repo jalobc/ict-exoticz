@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jalobc.github.io/ict-exoticz/sitemap.xml
+Sitemap: https://ictexoticz.com/sitemap.xml
