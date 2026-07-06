@@ -29,6 +29,57 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         </p>
       </div>
 
+      <!-- ── Store Carousels ── -->
+      <div class="store-carousels">
+        <!-- Seneca -->
+        <div class="carousel-wrap">
+          <p class="carousel-label">ICT Exoticz 2 — Seneca</p>
+          <div class="carousel" id="carousel-seneca">
+            <button class="carousel-btn prev" aria-label="Previous">&#8249;</button>
+            <div class="carousel-track-wrap">
+              <div class="carousel-track">
+                <img src="/images/seneca/IMG_7369.jpg" alt="ICT Exoticz Seneca store" loading="lazy" />
+                <img src="/images/seneca/IMG_7373.jpg" alt="ICT Exoticz Seneca store" loading="lazy" />
+                <img src="/images/seneca/IMG_7391.JPG" alt="ICT Exoticz Seneca store" loading="lazy" />
+                <img src="/images/seneca/IMG_7392.JPG" alt="ICT Exoticz Seneca store" loading="lazy" />
+                <img src="/images/seneca/IMG_7393.JPG" alt="ICT Exoticz Seneca store" loading="lazy" />
+                <img src="/images/seneca/IMG_7394.JPG" alt="ICT Exoticz Seneca store" loading="lazy" />
+                <img src="/images/seneca/IMG_7395.JPG" alt="ICT Exoticz Seneca store" loading="lazy" />
+                <img src="/images/seneca/IMG_7396.JPG" alt="ICT Exoticz Seneca store" loading="lazy" />
+                <img src="/images/seneca/IMG_7397.JPG" alt="ICT Exoticz Seneca store" loading="lazy" />
+                <img src="/images/seneca/IMG_7398.JPG" alt="ICT Exoticz Seneca store" loading="lazy" />
+                <img src="/images/seneca/IMG_7399.JPG" alt="ICT Exoticz Seneca store" loading="lazy" />
+                <img src="/images/seneca/IMG_7400.JPG" alt="ICT Exoticz Seneca store" loading="lazy" />
+              </div>
+            </div>
+            <button class="carousel-btn next" aria-label="Next">&#8250;</button>
+          </div>
+          <div class="carousel-dots" id="dots-seneca"></div>
+        </div>
+
+        <!-- 21st -->
+        <div class="carousel-wrap">
+          <p class="carousel-label">ICT Exoticz 3 — 21st St</p>
+          <div class="carousel" id="carousel-21st">
+            <button class="carousel-btn prev" aria-label="Previous">&#8249;</button>
+            <div class="carousel-track-wrap">
+              <div class="carousel-track">
+                <img src="/images/21st/IMG_7386.JPG" alt="ICT Exoticz 21st store" loading="lazy" />
+                <img src="/images/21st/IMG_7429.JPG" alt="ICT Exoticz 21st store" loading="lazy" />
+                <img src="/images/21st/IMG_7430.JPG" alt="ICT Exoticz 21st store" loading="lazy" />
+                <img src="/images/21st/IMG_7433.JPG" alt="ICT Exoticz 21st store" loading="lazy" />
+                <img src="/images/21st/IMG_7434.JPG" alt="ICT Exoticz 21st store" loading="lazy" />
+                <img src="/images/21st/IMG_7435.JPG" alt="ICT Exoticz 21st store" loading="lazy" />
+                <img src="/images/21st/IMG_7436.JPG" alt="ICT Exoticz 21st store" loading="lazy" />
+                <img src="/images/21st/IMG_7437.JPG" alt="ICT Exoticz 21st store" loading="lazy" />
+              </div>
+            </div>
+            <button class="carousel-btn next" aria-label="Next">&#8250;</button>
+          </div>
+          <div class="carousel-dots" id="dots-21st"></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -132,6 +183,42 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         badge.classList.add('is-closed');
       }
     });
+
+    // ── Carousels ──
+    function initCarousel(carouselId: string, dotsId: string) {
+      const carousel = document.getElementById(carouselId);
+      const dotsEl = document.getElementById(dotsId);
+      if (!carousel || !dotsEl) return;
+
+      const track = carousel.querySelector<HTMLElement>('.carousel-track')!;
+      const imgs = Array.from(track.querySelectorAll('img'));
+      const total = imgs.length;
+      let current = 0;
+
+      // Build dots
+      imgs.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.setAttribute('aria-label', `Slide ${i + 1}`);
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goTo(i));
+        dotsEl.appendChild(dot);
+      });
+
+      function goTo(index: number) {
+        current = (index + total) % total;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dotsEl.querySelectorAll('button').forEach((d, i) => d.classList.toggle('active', i === current));
+      }
+
+      carousel.querySelector('.prev')!.addEventListener('click', () => goTo(current - 1));
+      carousel.querySelector('.next')!.addEventListener('click', () => goTo(current + 1));
+
+      // Auto-advance every 4s
+      setInterval(() => goTo(current + 1), 4000);
+    }
+
+    initCarousel('carousel-seneca', 'dots-seneca');
+    initCarousel('carousel-21st', 'dots-21st');
   </script>
 
   <!-- ── Categories ── -->
@@ -160,6 +247,37 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <a href={`${base}products`} class="card-link">View Products &rarr;</a>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Brands ── -->
+  <section class="section brands-section fade-in">
+    <div class="container">
+      <span class="section-label">In Store Now</span>
+      <h2>Shop Our Top Brands</h2>
+      <div class="divider"></div>
+      <div class="brands-grid">
+        <div class="brand-card glass-card"><img src="/images/brands/LilMFs.png" alt="Lil MF's" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/Kream-Logo.png" alt="Kream" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/habit-hemp-615987.png" alt="Habit" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/PUFFY.png" alt="Puffy" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/Homiez.png" alt="Homiez" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/indacloud.png" alt="Indacloud" style="filter:invert(1)" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/Sacred Journey.png" alt="Sacred Journey" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/hmp.store.png" alt="Hmp.store" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/Orbital.png" alt="Orbital" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/Fuego.png" alt="Fuego" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/sluggers.png" alt="Sluggers" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/whatabar-brand.png" alt="Whatabar" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/CoastalClouds.png" alt="Coastal Clouds" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/Pica-Bar-Logo.png" alt="Pica Bar" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/Rifbar-Vape.png" alt="Rifbar" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/JUICE-HEAD-LOGO.png" alt="Juice Head" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/fume.png" alt="Fume" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/TorchLogoNEWprint-site_650x.png" alt="Torch" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/black-roses-logo.png" alt="Black Roses" /></div>
+        <div class="brand-card glass-card"><img src="/images/brands/wildwoodlogo_03bbbaeb-3d0e-494e-92f0-8981796549e2.png" alt="Wildwood" /></div>
       </div>
     </div>
   </section>
@@ -575,6 +693,93 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     flex-shrink: 0;
   }
 
+  /* ── Store Carousels ── */
+  .store-carousels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+    width: 100%;
+  }
+
+  .carousel-wrap { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .carousel-label {
+    font-family: 'Panchang', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .carousel-track-wrap {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 12px;
+    aspect-ratio: 4/3;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+  }
+
+  .carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .carousel-track img {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .carousel-btn {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg-2);
+    color: var(--text-1);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+    backdrop-filter: blur(8px);
+  }
+  .carousel-btn:hover { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+
+  .carousel-dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .carousel-dots button {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    border: none;
+    background: var(--text-3);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .carousel-dots button.active { background: var(--accent); transform: scale(1.3); }
+
+  @media (max-width: 768px) {
+    .store-carousels { grid-template-columns: 1fr; }
+  }
 
   /* ── Categories ── */
   .categories-grid {
@@ -611,6 +816,49 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   }
   .card-link:hover { color: var(--accent-hover); }
 
+  /* ── Brands ── */
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .brand-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    aspect-ratio: 3/2;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+
+  .brand-card:hover {
+    border-color: var(--glass-border-hover);
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: translateY(-3px);
+  }
+
+  .brand-card img {
+    max-width: 100%;
+    max-height: 80px;
+    object-fit: contain;
+    opacity: 0.85;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .brand-card:hover img {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 900px) {
+    .brands-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .brands-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
   /* ── About ── */
   .about-inner {
     display: grid;
@@ -633,7 +881,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   }
 
   .stat-num {
-    font-family: 'Clash Display', sans-serif;
+    font-family: 'Panchang', sans-serif;
     font-size: 2.4rem;
     font-weight: 700;
     color: var(--accent);
@@ -695,7 +943,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   }
 
   .deal-discount {
-    font-family: 'Clash Display', sans-serif;
+    font-family: 'Panchang', sans-serif;
     font-size: 2rem;
     font-weight: 700;
     color: var(--accent);

@@ -102,6 +102,26 @@ const { title, description = 'ICT Exoticz – Your go-to shop for herb, tobacco,
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
     </button>
+
+    <!-- Rewards Button -->
+    <button id="rewards-btn" class="rewards-btn" aria-label="Sign up for rewards">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>Rewards</span>
+    </button>
+
+    <!-- Rewards Modal -->
+    <div id="rewards-modal" class="rewards-modal" role="dialog" aria-modal="true" aria-label="Sign up for rewards">
+      <div class="rewards-modal-inner">
+        <button id="rewards-close" class="rewards-close" aria-label="Close">&times;</button>
+        <p class="rewards-eyebrow">Join the Club</p>
+        <h2 class="rewards-title">Sign Up for Rewards</h2>
+        <p class="rewards-sub">Scan the QR code below to join our rewards program and start earning today.</p>
+        <div class="rewards-qr-wrap">
+          <img src="/rewards-qr.png" alt="ICT Exoticz rewards sign-up QR code" class="rewards-qr" />
+        </div>
+      </div>
+    </div>
+    <div id="rewards-backdrop" class="rewards-backdrop"></div>
   </body>
 </html>
 
@@ -162,6 +182,28 @@ const { title, description = 'ICT Exoticz – Your go-to shop for herb, tobacco,
   }, { passive: true });
   btt?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+  // ── Rewards modal ──
+  const rewardsBtn = document.getElementById('rewards-btn');
+  const rewardsModal = document.getElementById('rewards-modal');
+  const rewardsBackdrop = document.getElementById('rewards-backdrop');
+  const rewardsClose = document.getElementById('rewards-close');
+
+  function openRewards() {
+    rewardsModal?.classList.add('open');
+    rewardsBackdrop?.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeRewards() {
+    rewardsModal?.classList.remove('open');
+    rewardsBackdrop?.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  rewardsBtn?.addEventListener('click', openRewards);
+  rewardsClose?.addEventListener('click', closeRewards);
+  rewardsBackdrop?.addEventListener('click', closeRewards);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeRewards(); });
+
   // ── Scroll animations ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -218,9 +260,17 @@ const { title, description = 'ICT Exoticz – Your go-to shop for herb, tobacco,
   }
 
   @font-face {
-    font-family: 'Clash Display';
-    src: url('/fonts/ClashDisplay-Bold.woff2') format('woff2');
+    font-family: 'Panchang';
+    src: url('/fonts/Panchang-Bold.woff2') format('woff2');
     font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Panchang';
+    src: url('/fonts/Panchang-Extrabold.woff2') format('woff2');
+    font-weight: 800;
     font-style: normal;
     font-display: swap;
   }
@@ -305,11 +355,11 @@ const { title, description = 'ICT Exoticz – Your go-to shop for herb, tobacco,
 
   /* ── Typography ── */
   h1, h2 {
-    font-family: 'Clash Display', sans-serif;
+    font-family: 'Panchang', sans-serif;
     font-weight: 800;
   }
   h3, h4, h5, h6 {
-    font-family: 'Clash Display', sans-serif;
+    font-family: 'Panchang', sans-serif;
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.01em;
@@ -351,7 +401,7 @@ const { title, description = 'ICT Exoticz – Your go-to shop for herb, tobacco,
   /* ── Section label ── */
   .section-label {
     display: inline-block;
-    font-family: 'Clash Display', sans-serif;
+    font-family: 'Panchang', sans-serif;
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.16em;
@@ -401,7 +451,7 @@ const { title, description = 'ICT Exoticz – Your go-to shop for herb, tobacco,
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    font-family: 'Clash Display', sans-serif;
+    font-family: 'Panchang', sans-serif;
     font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.04em;
@@ -519,5 +569,125 @@ const { title, description = 'ICT Exoticz – Your go-to shop for herb, tobacco,
   .back-to-top:hover {
     border-color: var(--accent);
     box-shadow: 0 0 16px var(--accent-dim);
+  }
+
+  /* ── Rewards Button ── */
+  .rewards-btn {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) translateX(calc(100% - 40px));
+    z-index: 98;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem 0.6rem 0.75rem;
+    background: var(--accent);
+    color: #000;
+    font-family: 'Panchang', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    border: none;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.2s;
+    box-shadow: -4px 0 20px rgba(6,182,212,0.35);
+  }
+  .rewards-btn:hover {
+    transform: translateY(-50%) translateX(0);
+    box-shadow: -4px 0 28px rgba(6,182,212,0.55);
+  }
+
+  /* ── Rewards Modal ── */
+  .rewards-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .rewards-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .rewards-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -48%) scale(0.96);
+    z-index: 201;
+    width: min(420px, 92vw);
+    background: var(--bg-alt);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(6,182,212,0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .rewards-modal.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .rewards-close {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-2);
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+  .rewards-close:hover { color: var(--text-1); }
+
+  .rewards-eyebrow {
+    font-family: 'Panchang', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .rewards-title {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    margin-bottom: 0.75rem;
+    color: var(--text-1);
+  }
+
+  .rewards-sub {
+    font-size: 0.9rem;
+    color: var(--text-2);
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+  }
+
+  .rewards-qr-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 12px;
+    width: fit-content;
+    margin-inline: auto;
+  }
+
+  .rewards-qr {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    display: block;
   }
 </style>
